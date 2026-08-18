@@ -1,0 +1,638 @@
+{
+  "meta": {
+    "homeTitle": "Liu Qiujing · Personal Site",
+    "aboutTitle": "About · Liu Qiujing",
+    "skillsTitle": "Skills · Liu Qiujing",
+    "projectsTitle": "Projects · Liu Qiujing",
+    "portfolioTitle": "Portfolio · Liu Qiujing",
+    "contactTitle": "Contact · Liu Qiujing",
+    "description": "Liu Qiujing's personal site: AI application & toolchain development, embedded hardware background, DeepSeek API engineering practice"
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "avatarAlt": "Portrait of Liu Qiujing",
+    "greeting": "Hi, I'm",
+    "name": "Liu Qiujing",
+    "tagline": "AI Application Development · Automation Toolchains · Embedded Background",
+    "intro": "An Electronic Information Science and Technology undergraduate at Guizhou University (Class of 2026), focused on AI applications and toolchains (DeepSeek API, automation scripting, web apps), with a background in embedded hardware and design contests. Currently looking for AI-related roles.",
+    "status": "Seeking AI application / toolchain roles · Guiyang · Available immediately",
+    "ctaProjects": "View My Projects",
+    "ctaContact": "Contact Me"
+  },
+  "status": {
+    "title": "Current Status",
+    "subtitle": "What I'm up to right now",
+    "items": [
+      {
+        "icon": "🎯",
+        "label": "Current Goal",
+        "text": "Land an AI application / toolchain development role (graduation project done, available immediately)"
+      },
+      {
+        "icon": "💼",
+        "label": "Recent Work",
+        "text": "Enterprise internship: DeepSeek-powered document knowledge base (1,141 docs, three-tier architecture)"
+      },
+      {
+        "icon": "🤖",
+        "label": "Exploring",
+        "text": "DeepSeek API engineering: RAG knowledge bases, automation pipelines, agents"
+      }
+    ]
+  },
+  "featured": {
+    "title": "Featured Projects",
+    "subtitle": "Highlights across AI toolchains and hardware",
+    "viewAll": "View All Projects"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Who I am and what I do",
+    "p1": "Hi! I'm Liu Qiujing (Tujia), from Tongren, Guizhou, an undergraduate in Electronic Information Science and Technology at the School of Big Data & Information Engineering, Guizhou University (Class of 2026). From PCB soldering and MCU development to AI toolchain practice, I like turning ideas into working things with my own hands.",
+    "p2": "Recently I practiced AI document engineering during an enterprise internship: organizing 1,141 project documents into a three-tier knowledge base (raw text + OCR + indexed summaries) with DeepSeek. During university I won a national 2nd prize in the Higher Education Cup Advanced Drawing Contest and a provincial 1st prize in the Challenge Cup. I'm looking for AI application / toolchain development roles.",
+    "traitsTitle": "Personal Strengths",
+    "traits": [
+      {
+        "icon": "🔧",
+        "label": "Hands-On Builder",
+        "text": "Independently completed circuit design, PCB soldering and full hardware/firmware debugging"
+      },
+      {
+        "icon": "📈",
+        "label": "Fast Learner",
+        "text": "Prepared across disciplines in 3 months and won a national 2nd + provincial 2nd prize"
+      },
+      {
+        "icon": "🤝",
+        "label": "Organizer",
+        "text": "Student Union member, roller skating club secretary, course team leader"
+      },
+      {
+        "icon": "⭐",
+        "label": "Reliable & Careful",
+        "text": "40+ hours of epidemic-prevention volunteering; Volunteer Service Star award"
+      }
+    ],
+    "honorsTitle": "Honors & Awards",
+    "honorsSubtitle": "7 provincial-level and above / university-level awards (click a certificate to view the original image)",
+    "honors": [
+      {
+        "title": "Higher Education Cup Advanced Drawing Contest · Water Resources Track 2nd Prize",
+        "time": "2025.07",
+        "level": "National",
+        "image": "assets/images/certs/先进成图大赛.jpg"
+      },
+      {
+        "title": "6th Guizhou College Structural Design Contest · 2nd Prize",
+        "time": "2025.06",
+        "level": "Provincial",
+        "image": "assets/images/certs/结构设计竞赛.jpg"
+      },
+      {
+        "title": "Challenge Cup \"Xi Chong Tian Jiang\" · Provincial 1st Prize",
+        "time": "2023",
+        "level": "Provincial",
+        "image": ""
+      },
+      {
+        "title": "Datang Cup ICT Fundamentals · Guizhou 3rd Prize",
+        "time": "2025.06",
+        "level": "Provincial",
+        "image": "assets/images/certs/大唐杯.jpg"
+      },
+      {
+        "title": "National College Electronics Design Contest · Guizhou Participation Award",
+        "time": "2025.08",
+        "level": "Provincial",
+        "image": "assets/images/certs/电赛.jpg"
+      },
+      {
+        "title": "Lanqiao Cup · Provincial 3rd Prize",
+        "time": "2025",
+        "level": "Provincial",
+        "image": ""
+      },
+      {
+        "title": "Volunteer Service Star, Guizhou University",
+        "time": "2022.12",
+        "level": "University",
+        "image": "assets/images/certs/志愿服务之星.jpg"
+      }
+    ],
+    "interestsTitle": "Interests & Hobbies",
+    "interests": [
+      "Badminton",
+      "Table Tennis",
+      "Roller Skating",
+      "Electronics DIY",
+      "Video Editing",
+      "Tech Writing",
+      "Trying AI Tools"
+    ],
+    "timelineTitle": "Experience",
+    "timeline": [
+      {
+        "time": "2026 - Present",
+        "title": "Enterprise Internship · AI Document Engineering",
+        "desc": "Organized 1,141 project documents into a three-tier knowledge base (raw text + OCR + indexed summaries) with DeepSeek, supporting daily document processing and report generation"
+      },
+      {
+        "time": "2025 - 2026.06",
+        "title": "Graduation Project: STM32 Smart Obstacle-Avoidance Inspection Car",
+        "desc": "Circuit design, PCB soldering, embedded firmware and system debugging done independently; defended in June 2026"
+      },
+      {
+        "time": "2025.06 - 2025.08",
+        "title": "Competition Season",
+        "desc": "Intense contest run: Higher Education Cup (national 2nd), Structural Design (provincial 2nd), Datang Cup (provincial 3rd), Electronics Design (participation award)"
+      },
+      {
+        "time": "2023.09 - 2024.06",
+        "title": "Roller Skating Club, Guizhou University · Secretary",
+        "desc": "Organized club activities and member recruitment"
+      },
+      {
+        "time": "Year 2023",
+        "title": "Challenge Cup \"Xi Chong Tian Jiang\" · Provincial 1st Prize",
+        "desc": "Team member: data collection and functional design of the online platform and mini program"
+      },
+      {
+        "time": "2022.12",
+        "title": "Epidemic-Prevention Volunteering · Volunteer Service Star",
+        "desc": "Helped secure campus epidemic prevention; 40+ hours of volunteering"
+      },
+      {
+        "time": "2022.09 - 2023.06",
+        "title": "Student Union Publicity Department, Guizhou University · Member",
+        "desc": "Campus event publicity planning and material production; attended the student congress"
+      },
+      {
+        "time": "2022.09 - 2026.07",
+        "title": "Guizhou University · Electronic Information Science and Technology (B.Eng.)",
+        "desc": "Major courses: circuit analysis, analog/digital electronics, signals and systems, communication principles, digital signal processing"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Ordered by AI application development needs (self-assessed, based on real project output)",
+    "categories": [
+      {
+        "icon": "💻",
+        "name": "Programming Languages",
+        "items": [
+          {
+            "name": "Python",
+            "level": 85
+          },
+          {
+            "name": "PowerShell Scripting",
+            "level": 85
+          },
+          {
+            "name": "C",
+            "level": 80
+          },
+          {
+            "name": "Verilog HDL",
+            "level": 80
+          },
+          {
+            "name": "C++",
+            "level": 70
+          },
+          {
+            "name": "JavaScript",
+            "level": 55
+          },
+          {
+            "name": "SQL",
+            "level": 55
+          },
+          {
+            "name": "Java",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🤖",
+        "name": "AI Tools & API",
+        "items": [
+          {
+            "name": "DeepSeek",
+            "level": 90
+          },
+          {
+            "name": "API Calling & Orchestration",
+            "level": 85
+          },
+          {
+            "name": "Prompt Engineering",
+            "level": 80
+          },
+          {
+            "name": "ChatGPT",
+            "level": 80
+          },
+          {
+            "name": "Cursor",
+            "level": 75
+          },
+          {
+            "name": "Codex",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🧰",
+        "name": "Dev Tools & Engineering",
+        "items": [
+          {
+            "name": "VS Code",
+            "level": 85
+          },
+          {
+            "name": "PyCharm",
+            "level": 80
+          },
+          {
+            "name": "Git / GitHub",
+            "level": 75
+          },
+          {
+            "name": "VMware",
+            "level": 75
+          },
+          {
+            "name": "Linux",
+            "level": 60
+          },
+          {
+            "name": "SQL Server",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "🔧",
+        "name": "Embedded & Hardware",
+        "items": [
+          {
+            "name": "STM32 MCU",
+            "level": 85
+          },
+          {
+            "name": "Keil MDK",
+            "level": 85
+          },
+          {
+            "name": "PCB Soldering",
+            "level": 85
+          },
+          {
+            "name": "Embedded System Design",
+            "level": 80
+          },
+          {
+            "name": "Proteus / Multisim",
+            "level": 75
+          },
+          {
+            "name": "FPGA (Quartus II)",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🔬",
+        "name": "Simulation & Networking",
+        "items": [
+          {
+            "name": "ModelSim",
+            "level": 70
+          },
+          {
+            "name": "Ultiboard",
+            "level": 65
+          },
+          {
+            "name": "Wireshark",
+            "level": 60
+          },
+          {
+            "name": "COMSOL",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🎨",
+        "name": "Design & Modeling",
+        "items": [
+          {
+            "name": "MATLAB",
+            "level": 70
+          },
+          {
+            "name": "AutoCAD",
+            "level": 65
+          },
+          {
+            "name": "Photoshop",
+            "level": 65
+          },
+          {
+            "name": "SketchUp",
+            "level": 60
+          },
+          {
+            "name": "Premiere / AE",
+            "level": 60
+          },
+          {
+            "name": "Blender",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "📄",
+        "name": "Office & Collaboration",
+        "items": [
+          {
+            "name": "WPS / Word / PPT",
+            "level": 90
+          },
+          {
+            "name": "Excel",
+            "level": 80
+          },
+          {
+            "name": "Outlook / Gmail",
+            "level": 75
+          },
+          {
+            "name": "WeCom / DingTalk",
+            "level": 75
+          }
+        ]
+      }
+    ],
+    "note": {
+      "title": "Scoring Basis & Project Evidence",
+      "text": "Self-assessed scores (0-100) based on real project output in three folders; no third-party certification data. Three factors: ① depth & frequency of use in real projects; ② level of independent work / leadership; ③ complexity and scale of outputs.",
+      "rules": [
+        {
+          "level": "85-90",
+          "desc": "Complete projects built and iterated independently (DeepSeek: 3 shipped projects; PowerShell: 6 pipeline versions + chat client + KB scripts; Python: core language of AI projects; STM32: full graduation-project flow)"
+        },
+        {
+          "level": "70-80",
+          "desc": "Real project experience with independent modules (C, Verilog, Keil, PCB soldering, Git, etc.)"
+        },
+        {
+          "level": "50-65",
+          "desc": "Studied or assisted; can read code and ramp up quickly (Java, SQL, JavaScript, COMSOL, etc.)"
+        }
+      ]
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Click a card to expand architecture and results",
+    "linkLabel": "View Project",
+    "detailLabel": "Expand",
+    "roleLabel": "My Role",
+    "archLabel": "Overall Architecture",
+    "resultLabel": "What Was Achieved",
+    "list": [
+      {
+        "name": "Smart Obstacle-Avoidance Inspection Car (Graduation Project)",
+        "desc": "An STM32F407VET6-based smart inspection car with multi-sensor obstacle avoidance, live video streaming and Bluetooth control, built end-to-end independently.",
+        "tech": [
+          "STM32F407",
+          "HC-SR04",
+          "ESP32-CAM",
+          "C"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "STM32F407VET6 main controller\n├─ HC-SR04 ×3 ── multi-direction ultrasonic ranging + median filter\n├─ L298N ────── PWM motor drive\n├─ ESP32-CAM ── WiFi video streaming → phone view\n├─ HC05 ─────── Bluetooth commands → manual/auto mode interlock\n├─ OLED ─────── mode & distance display\n└─ Power: 12V → LM2596(5V) → AMS1117(3.3V) two-stage buck",
+        "result": "Autonomously avoids single and continuous multi-obstacle paths at a 30 cm threshold; smooth phone video; responsive Bluetooth control; stable operation; 53-page thesis, defended",
+        "role": "Independent developer: circuit design, PCB soldering, embedded firmware and system debugging done end-to-end alone"
+      },
+      {
+        "name": "Enterprise Document Knowledge Base: AI-Driven Three-Tier Architecture",
+        "desc": "Organized 1,141 enterprise project documents into a three-tier knowledge base (raw text + OCR + indexed summaries) maintained by a DeepSeek pipeline.",
+        "tech": [
+          "DeepSeek API",
+          "PowerShell",
+          "OCR",
+          "RAG"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "Source material (1,141 documents + screenshots)\n├─ 01-Raw Text/ ── de-formatted text (numbered 0001~0214)\n├─ 02-OCR/ ────── image text recognition & table parsing\n└─ 00-Index & Summaries/ ── index mapping + themed summaries\nPipeline: read → extract → OCR → summarize → archive (DeepSeek session)",
+        "result": "Covers daily/weekly reports, 12 special projects, training & product materials; powers daily document processing and report generation; key playbooks searchable by number",
+        "role": "Designed and maintained independently: defined the three-tier structure, wrote the PowerShell pipeline, ran extraction and summaries via DeepSeek sessions"
+      },
+      {
+        "name": "PythonKnowledgeGenerator: AI Knowledge Production Pipeline",
+        "desc": "A DeepSeek API-driven Python knowledge generator with layered architecture, resume-from-breakpoint, log tracking and quality stats.",
+        "tech": [
+          "PowerShell",
+          "DeepSeek API",
+          "Pipeline"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "Config/Topics.json (task library)\n  ↓ Build-Prompt ──── generates prompts\n  ↓ Invoke-DeepSeek ── HTTP API call\n  ↓ Output ────────── categorized Markdown knowledge base\nCache ── resume state    Logs ── run logs    Config ── settings",
+        "result": "Batch-generates a categorized Python knowledge base; resumes from breakpoint without wasting tokens; iterated V1→V3 (6 script versions) with quality reports",
+        "role": "Independent developer: 6 versions from V1 to V3.3.1; designed resume-from-breakpoint, logging and quality stats"
+      },
+      {
+        "name": "STM32 Line-Tracking Car with Gimbal Target Shooting (Electronics Design Contest)",
+        "desc": "Automatic line tracking and gimbal target shooting; responsible for circuit soldering and the tracking module firmware.",
+        "tech": [
+          "STM32",
+          "C",
+          "Circuit Soldering"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "STM32 main controller\n├─ Tracking module ── line sensors + line-following algorithm\n├─ Gimbal servo ──── target lock & shooting\n└─ Board soldering and full debugging",
+        "result": "Stable automatic line tracking; gimbal shooting accuracy 1.2 mm; won a participation award in the Guizhou division finals",
+        "role": "Hardware & firmware: circuit soldering and tracking module code (team contest)"
+      },
+      {
+        "name": "\"Xi Chong Tian Jiang\" Challenge Cup Project (Provincial 1st Prize)",
+        "desc": "Team member responsible for data collection and functional design of the online platform and mini program; the project won a provincial 1st prize (2023).",
+        "tech": [
+          "Mini Program",
+          "Data Curation"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "Team collaboration\n├─ Data collection & classification\n├─ Online platform feature design\n└─ Mini program feature design",
+        "result": "Project won a provincial 1st prize in the Challenge Cup (2023); I handled data curation and platform feature design",
+        "role": "Team member: data collection, classification and platform feature design"
+      },
+      {
+        "name": "IoT Terminal Device Access Management System (Project Lead)",
+        "desc": "Led the development of an IoT terminal device access management system as project lead (2023).",
+        "tech": [
+          "IoT",
+          "C / C++"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "Terminal devices (sensors/gateways)\n  ↓ Access layer: protocol adaptation & registration\n  ↓ Management system: device ledger, status monitoring, alerts",
+        "result": "Led the full development cycle as project lead, managing schedule, division of work and delivery (2023)",
+        "role": "Project lead: schedule management, work division and delivery"
+      },
+      {
+        "name": "Face Recognition System Based on dlib",
+        "desc": "Face feature extraction, model training and recognition matching with PyCharm and the dlib library.",
+        "tech": [
+          "Python",
+          "dlib"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "Face image → dlib landmark extraction\n  ↓ Model training → feature vector library\nNew face → feature matching → recognition result",
+        "result": "Implemented face feature vector generation and matching; responsible for debugging and performance tuning",
+        "role": "Independent developer: feature extraction, model training and matching; debugging and performance tuning"
+      },
+      {
+        "name": "Digital Clock & Gas Stove Flame-Out Protection Device",
+        "desc": "A TTL-logic digital clock plus a thermocouple-based gas stove flame-out protection device.",
+        "tech": [
+          "TTL Logic",
+          "Multisim"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "TTL logic chips → digital clock (weekday/AM-PM display)\nThermocouple sensor → flame-out detection → protection action",
+        "result": "Completed circuit simulation and physical verification; led project coordination and progress tracking",
+        "role": "Project coordination: work division, circuit simulation and physical verification"
+      },
+      {
+        "name": "EDA: Vending Machine Design & Simulation",
+        "desc": "Vending machine control logic developed in Verilog HDL and simulated in ModelSim.",
+        "tech": [
+          "Verilog HDL",
+          "ModelSim"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "Coin/selection inputs\n  ↓ State machine: idle → coin → dispense → change\nModelSim functional simulation",
+        "result": "Independently completed the control logic and state machine design; functional simulation passed",
+        "role": "Independent developer: control logic and state machine design, functional simulation"
+      },
+      {
+        "name": "Impact of Population Aging on Guiyang's Economy (Market Research Contest)",
+        "desc": "Built a baseline regression model with statistical and econometric methods to study the effect of aging on GDP.",
+        "tech": [
+          "Econometrics",
+          "MATLAB"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "NBS / Guiyang Statistics Bureau data\n  ↓ Data cleaning & variable construction\n  ↓ Baseline regression model (econometrics)\n  ↓ Impact assessment & conclusion",
+        "result": "Empirical conclusion: population aging has a weak impact on Guiyang's GDP growth"
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "My works and project architectures (click a card to expand)",
+    "list": [
+      {
+        "title": "Enterprise Document Knowledge Base (DeepSeek-Driven)",
+        "type": "AI Project",
+        "desc": "DeepSeek-driven three-tier knowledge base: 1,141 documents → raw text / OCR / indexed summaries, supporting document processing and report generation.",
+        "link": "",
+        "image": "",
+        "arch": "Source material (1,141 files)\n  ↓ ingestion pipeline\n├─ 01-Raw Text/ ── de-formatted text (0001~0214)\n├─ 02-OCR/ ────── image text & table parsing\n└─ 00-Index & Summaries/ ── mapping + summaries\nMaintained by a DeepSeek session + expansion spec"
+      },
+      {
+        "title": "PythonKnowledgeGenerator",
+        "type": "AI Project",
+        "desc": "DeepSeek API knowledge generation pipeline (PowerShell): layered architecture + resume-from-breakpoint + quality stats.",
+        "link": "",
+        "image": "",
+        "arch": "PythonKnowledgeGenerator/\n├── Config/   ← Topics.json task library, Settings\n├── Cache/    ← generation state (resume)\n├── Logs/     ← run logs\n├── Output/   ← categorized knowledge base\n└── *.ps1     ← pipeline main (6 versions)\nFunctions: Write-Log / Invoke-DeepSeek / Build-Prompt\n           Load-Cache / Save-Cache / Get-ContentInfo"
+      },
+      {
+        "title": "DeepSeek Chat Client (PowerShell)",
+        "type": "AI Project",
+        "desc": "Command-line multi-turn chat client with role presets, conversation context and request templates separated.",
+        "link": "",
+        "image": "",
+        "arch": "DeepSeekChat.ps1\n├─ roles.json ───────── role presets\n├─ chat_history.json ── conversation context\n├─ body.json ────────── API request template\n└─ response.json ────── response cache"
+      },
+      {
+        "title": "HarnessWeb Personal Site (this website)",
+        "type": "Web Project",
+        "desc": "Native ES Module single-page app: hash routing, bilingual i18n, interactive particle background, zero dependencies.",
+        "link": "",
+        "image": "",
+        "arch": "src/\n├─ index.html ───── SPA entry\n├─ js/\n│  ├─ main.js ───── bootstrap\n│  ├─ router.js ─── hash routing + view transitions\n│  ├─ i18n.js ───── bilingual dictionaries\n│  ├─ background.js ── particle background\n│  └─ views/ ────── one module per view\n├─ i18n/ ── zh.json / en.json (content & code separated)\n└─ assets/ ── avatar & certificate images"
+      },
+      {
+        "title": "Smart Obstacle-Avoidance Inspection Car (Graduation Project)",
+        "type": "Hardware",
+        "desc": "STM32F407 + three ultrasonic sensors + ESP32-CAM streaming + Bluetooth dual modes, built end-to-end.",
+        "link": "",
+        "image": "",
+        "arch": "STM32F407VET6 main controller\n├─ HC-SR04 ×3 ── multi-direction ultrasonic ranging\n├─ L298N ────── PWM motor drive\n├─ ESP32-CAM ── WiFi video streaming → phone\n├─ HC05 ─────── Bluetooth remote / mode interlock\n└─ OLED ─────── status display\nPower: 12V → 5V → 3.3V two-stage buck"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Interested in AI application development, embedded systems or collaboration? Reach out through any of these channels",
+    "open": "Open",
+    "copy": "Copy",
+    "copied": "Copied ✓",
+    "items": [
+      {
+        "icon": "📧",
+        "label": "Primary Email",
+        "value": "2684016264@qq.com",
+        "link": "mailto:2684016264@qq.com"
+      },
+      {
+        "icon": "📱",
+        "label": "Phone",
+        "value": "17785687216",
+        "link": "tel:17785687216"
+      },
+      {
+        "icon": "📍",
+        "label": "Location",
+        "value": "Guiyang · Guizhou University",
+        "link": ""
+      },
+      {
+        "icon": "🎓",
+        "label": "University",
+        "value": "Guizhou University · Electronic Information Science and Technology (Class of 2026)",
+        "link": ""
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} Liu Qiujing · Guiyang · Built with DeepSeek"
+  }
+}

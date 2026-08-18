@@ -1,0 +1,152 @@
+/* ============================================================
+   layout.css — 导航、主视图、页脚、布局容器
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- 顶部导航（毛玻璃、固定、紧凑） ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 11, 15, 0.65);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--separator);
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  gap: 16px;
+}
+
+.logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.nav-links { display: flex; gap: 2px; }
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  transition: color 0.18s, background 0.18s;
+}
+
+.nav-links a:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.06); }
+
+.nav-links a.active { color: #fff; background: rgba(255, 255, 255, 0.1); }
+
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+.lang-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-btn);
+  padding: 5px 14px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.18s, filter 0.18s;
+}
+
+.lang-toggle:hover { background: rgba(255, 255, 255, 0.14); }
+
+/* 汉堡按钮（移动端） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--separator);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--text-primary);
+  border-radius: 1px;
+  transition: transform 0.25s var(--ease-out), opacity 0.25s;
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ---------- 主视图 ---------- */
+.main-view {
+  flex: 1;
+  padding-top: 20px;
+  padding-bottom: 64px;
+}
+
+/* 视图切换动画 */
+.view-enter {
+  animation: viewIn 0.3s var(--ease-out) both;
+}
+
+@keyframes viewIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px solid var(--separator);
+  padding: 20px 0 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.site-footer p { color: var(--text-secondary); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+}
+
+@media (max-width: 640px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(11, 11, 15, 0.96);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--separator);
+    padding: 12px 20px 16px;
+    display: none;
+  }
+
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 16px; font-size: 16px; }
+}

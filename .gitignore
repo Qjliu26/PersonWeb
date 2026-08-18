@@ -1,0 +1,15 @@
+# 系统文件
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
+
+# 临时文件
+*.tmp
+*.log
+
+# 本地文档（含本地路径与工作资料分析，不上传公网）
+docs/

@@ -1,0 +1,639 @@
+{
+  "meta": {
+    "homeTitle": "刘秋靖 · 个人主页",
+    "aboutTitle": "关于我 · 刘秋靖",
+    "skillsTitle": "技能 · 刘秋靖",
+    "projectsTitle": "项目 · 刘秋靖",
+    "portfolioTitle": "作品集 · 刘秋靖",
+    "contactTitle": "联系我 · 刘秋靖",
+    "description": "刘秋靖的个人主页：AI 应用与工具链开发、嵌入式硬件背景，DeepSeek API 工程化实践"
+  },
+  "nav": {
+    "menu": "菜单",
+    "home": "首页",
+    "about": "关于",
+    "skills": "技能",
+    "projects": "项目",
+    "portfolio": "作品集",
+    "contact": "联系"
+  },
+  "hero": {
+    "avatarAlt": "刘秋靖的头像",
+    "greeting": "你好，我是",
+    "name": "刘秋靖",
+    "tagline": "AI 应用开发 · 自动化工具链 · 嵌入式背景",
+    "intro": "贵州大学电子信息科学与技术 2026 届本科生。主攻 AI 应用与工具链开发（DeepSeek API、自动化脚本、Web 应用），兼具嵌入式硬件与学科竞赛背景，正在寻找 AI 相关方向的工作。",
+    "status": "求职 AI 应用 / 工具链方向 · 坐标贵阳 · 可随时到岗",
+    "ctaProjects": "查看我的项目",
+    "ctaContact": "联系我"
+  },
+  "status": {
+    "title": "当前状态",
+    "subtitle": "我最近在做什么",
+    "items": [
+      {
+        "icon": "🎯",
+        "label": "当前目标",
+        "text": "入职 AI 应用 / 工具链开发方向岗位（毕设已完成，可随时到岗）"
+      },
+      {
+        "icon": "💼",
+        "label": "近期实践",
+        "text": "企业实习：DeepSeek 驱动的文档知识库建设（1141 份文档三级架构）"
+      },
+      {
+        "icon": "🤖",
+        "label": "正在探索",
+        "text": "DeepSeek API 工程化：RAG 知识库、自动化流水线、智能体"
+      }
+    ]
+  },
+  "featured": {
+    "title": "精选项目",
+    "subtitle": "AI 工具链与硬件实践的代表作",
+    "viewAll": "查看全部项目"
+  },
+  "about": {
+    "title": "关于我",
+    "subtitle": "我是谁，我在做什么",
+    "p1": "你好！我是刘秋靖（土家族），来自贵州铜仁，贵州大学大数据与信息工程学院电子信息科学与技术专业 2026 届本科生。从电路板焊接、单片机开发到 AI 工具链实践，我习惯把想法亲手变成能跑起来的作品。",
+    "p2": "近期在企业实习中实践 AI 文档工程：用 DeepSeek 把 1141 份项目文档整理为「原文提取 + OCR + 索引摘要」三级知识库。大学期间获得高教杯先进成图大赛国家级二等奖、挑战杯省级一等奖等荣誉，正在寻找 AI 应用 / 工具链开发方向的岗位。",
+    "traitsTitle": "个人特质",
+    "traits": [
+      {
+        "icon": "🔧",
+        "label": "动手能力强",
+        "text": "独立完成电路设计、PCB 焊接与整机软硬件调试"
+      },
+      {
+        "icon": "📈",
+        "label": "学习能力强",
+        "text": "3 个月跨专业备赛，拿下国家级二等奖 + 省级二等奖"
+      },
+      {
+        "icon": "🤝",
+        "label": "组织协调",
+        "text": "校学生会干事、轮滑社团团支书、课程小组组长"
+      },
+      {
+        "icon": "⭐",
+        "label": "踏实细致",
+        "text": "40h+ 疫情防控志愿服务，获贵州大学志愿服务之星"
+      }
+    ],
+    "honorsTitle": "荣誉与奖项",
+    "honorsSubtitle": "共 7 项省级及以上/校级荣誉，点击证书可查看原图",
+    "honors": [
+      {
+        "title": "高教杯先进成图大赛 · 水利赛道 二等奖",
+        "time": "2025.07",
+        "level": "国家级",
+        "image": "assets/images/certs/先进成图大赛.jpg"
+      },
+      {
+        "title": "贵州省第六届结构设计竞赛 · 二等奖",
+        "time": "2025.06",
+        "level": "省级",
+        "image": "assets/images/certs/结构设计竞赛.jpg"
+      },
+      {
+        "title": "挑战杯“喜虫天降”项目 · 省级一等奖",
+        "time": "2023",
+        "level": "省级",
+        "image": ""
+      },
+      {
+        "title": "大唐杯 ICT 基础通识赛 · 贵州赛区三等奖",
+        "time": "2025.06",
+        "level": "省级",
+        "image": "assets/images/certs/大唐杯.jpg"
+      },
+      {
+        "title": "全国大学生电子设计竞赛 · 贵州赛区成功参赛奖",
+        "time": "2025.08",
+        "level": "省级",
+        "image": "assets/images/certs/电赛.jpg"
+      },
+      {
+        "title": "蓝桥杯 · 省级三等奖",
+        "time": "2025",
+        "level": "省级",
+        "image": ""
+      },
+      {
+        "title": "贵州大学志愿服务之星",
+        "time": "2022.12",
+        "level": "校级",
+        "image": "assets/images/certs/志愿服务之星.jpg"
+      }
+    ],
+    "interestsTitle": "兴趣与爱好",
+    "interests": [
+      "羽毛球",
+      "乒乓球",
+      "轮滑",
+      "电子 DIY",
+      "视频剪辑",
+      "技术写作",
+      "AI 工具尝鲜"
+    ],
+    "timelineTitle": "经历",
+    "timeline": [
+      {
+        "time": "2026 - 至今",
+        "title": "企业实习 · AI 文档工程实践",
+        "desc": "用 DeepSeek 将 1141 份项目文档整理为「原文提取 + OCR + 索引摘要」三级知识库，支持日常文档处理与报告生成"
+      },
+      {
+        "time": "2025 - 2026.06",
+        "title": "毕业设计：基于 STM32 的智能避障巡检小车",
+        "desc": "独立完成电路设计、PCB 焊接、嵌入式固件与系统调试，已于 2026 年 6 月答辩结题"
+      },
+      {
+        "time": "2025.06 - 2025.08",
+        "title": "学科竞赛季",
+        "desc": "密集参赛：高教杯先进成图（国二）、结构设计（省二）、大唐杯（省三）、电赛（成功参赛奖）"
+      },
+      {
+        "time": "2023.09 - 2024.06",
+        "title": "贵州大学轮滑社团 · 团支书",
+        "desc": "组织社团日常活动与纳新工作"
+      },
+      {
+        "time": "2023 年",
+        "title": "挑战杯“喜虫天降”项目 · 省级一等奖",
+        "desc": "团队成员：数据收集与线上平台、小程序功能设计"
+      },
+      {
+        "time": "2022.12",
+        "title": "疫情防控志愿服务 · 志愿服务之星",
+        "desc": "筑牢校园疫情防控安全防线，累计志愿服务 40 小时以上"
+      },
+      {
+        "time": "2022.09 - 2023.06",
+        "title": "贵州大学校学生会宣传部 · 干事",
+        "desc": "参与校园活动宣传策划与物料制作，曾出席学生代表大会"
+      },
+      {
+        "time": "2022.09 - 2026.07",
+        "title": "贵州大学 · 电子信息科学与技术（工学学士）",
+        "desc": "主修电路分析、模拟/数字电子技术、信号与系统、通信原理、数字信号处理等"
+      }
+    ]
+  },
+  "skills": {
+    "title": "技能",
+    "subtitle": "按 AI 应用开发岗位需求排序（数值为自评熟练度，依据实际项目产出）",
+    "categories": [
+      {
+        "icon": "💻",
+        "name": "编程语言",
+        "items": [
+          {
+            "name": "Python",
+            "level": 85
+          },
+          {
+            "name": "PowerShell 脚本",
+            "level": 85
+          },
+          {
+            "name": "C",
+            "level": 80
+          },
+          {
+            "name": "Verilog HDL",
+            "level": 80
+          },
+          {
+            "name": "C++",
+            "level": 70
+          },
+          {
+            "name": "JavaScript",
+            "level": 55
+          },
+          {
+            "name": "SQL",
+            "level": 55
+          },
+          {
+            "name": "Java",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🤖",
+        "name": "AI 工具与 API",
+        "items": [
+          {
+            "name": "DeepSeek",
+            "level": 90
+          },
+          {
+            "name": "API 调用与编排",
+            "level": 85
+          },
+          {
+            "name": "Prompt 工程",
+            "level": 80
+          },
+          {
+            "name": "ChatGPT",
+            "level": 80
+          },
+          {
+            "name": "Cursor",
+            "level": 75
+          },
+          {
+            "name": "Codex",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🧰",
+        "name": "开发工具与工程化",
+        "items": [
+          {
+            "name": "VS Code",
+            "level": 85
+          },
+          {
+            "name": "PyCharm",
+            "level": 80
+          },
+          {
+            "name": "Git / GitHub",
+            "level": 75
+          },
+          {
+            "name": "VMware",
+            "level": 75
+          },
+          {
+            "name": "Linux",
+            "level": 60
+          },
+          {
+            "name": "SQL Server",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "🔧",
+        "name": "嵌入式与硬件",
+        "items": [
+          {
+            "name": "STM32 单片机",
+            "level": 85
+          },
+          {
+            "name": "Keil MDK",
+            "level": 85
+          },
+          {
+            "name": "PCB 焊接",
+            "level": 85
+          },
+          {
+            "name": "嵌入式系统设计",
+            "level": 80
+          },
+          {
+            "name": "Proteus / Multisim",
+            "level": 75
+          },
+          {
+            "name": "FPGA（Quartus II）",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🔬",
+        "name": "仿真与网络",
+        "items": [
+          {
+            "name": "ModelSim",
+            "level": 70
+          },
+          {
+            "name": "Ultiboard",
+            "level": 65
+          },
+          {
+            "name": "Wireshark",
+            "level": 60
+          },
+          {
+            "name": "COMSOL",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🎨",
+        "name": "设计与建模",
+        "items": [
+          {
+            "name": "MATLAB",
+            "level": 70
+          },
+          {
+            "name": "AutoCAD",
+            "level": 65
+          },
+          {
+            "name": "Photoshop",
+            "level": 65
+          },
+          {
+            "name": "SketchUp",
+            "level": 60
+          },
+          {
+            "name": "Premiere / AE",
+            "level": 60
+          },
+          {
+            "name": "Blender",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "📄",
+        "name": "办公协作",
+        "items": [
+          {
+            "name": "WPS / Word / PPT",
+            "level": 90
+          },
+          {
+            "name": "Excel",
+            "level": 80
+          },
+          {
+            "name": "Outlook / Gmail",
+            "level": 75
+          },
+          {
+            "name": "企业微信 / 钉钉",
+            "level": 75
+          }
+        ]
+      }
+    ],
+    "note": {
+      "title": "评分依据与项目证据",
+      "text": "熟练度为自评值（0-100），基于三个文件夹中的真实项目产出评估，无第三方认证数据。评分三要素：① 实际项目中的使用深度与频率；② 独立完成 / 主导的程度；③ 产出物的复杂度与规模。",
+      "rules": [
+        {
+          "level": "85-90 分",
+          "desc": "有独立完成并多版本迭代的完整项目（DeepSeek：3 个项目落地；PowerShell：6 版流水线 + 客户端 + 知识库脚本；Python：AI 项目核心语言；STM32：毕设全流程）"
+        },
+        {
+          "level": "70-80 分",
+          "desc": "有完整项目实战，能独立完成模块（C、Verilog、Keil、PCB 焊接、Git 等）"
+        },
+        {
+          "level": "50-65 分",
+          "desc": "学习过或辅助使用，能看懂并快速上手（Java、SQL、JavaScript、COMSOL 等）"
+        }
+      ]
+    }
+  },
+  "projects": {
+    "title": "项目",
+    "subtitle": "点击卡片展开架构与效果详情",
+    "linkLabel": "查看项目",
+    "detailLabel": "展开详情",
+    "roleLabel": "我的角色",
+    "archLabel": "总体架构",
+    "resultLabel": "达到的效果",
+    "list": [
+      {
+        "name": "智能避障巡检小车（毕业设计）",
+        "desc": "以 STM32F407VET6 为主控的智能巡检小车：多传感器融合避障、实时图传与蓝牙遥控，全流程独立完成。",
+        "tech": [
+          "STM32F407",
+          "HC-SR04",
+          "ESP32-CAM",
+          "C"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "STM32F407VET6 主控\n├─ HC-SR04 ×3 —— 多方向超声波测距 + 中值滤波\n├─ L298N —— PWM 电机驱动\n├─ ESP32-CAM —— WiFi 视频推流 → 手机端查看\n├─ HC05 —— 蓝牙指令解析 → 手动/自动模式互锁切换\n├─ OLED —— 工作模式与距离实时显示\n└─ 电源：12V → LM2596(5V) → AMS1117(3.3V) 二级降压",
+        "result": "30cm 避障阈值下可自主绕行单障碍物与多障碍物连续路径；手机端视频画面流畅；蓝牙遥控响应及时；系统运行稳定，论文 53 页、答辩结题",
+        "role": "独立开发者：电路设计、PCB 焊接、嵌入式固件与系统调试全流程独立完成"
+      },
+      {
+        "name": "企业文档知识库：AI 驱动的三级知识架构",
+        "desc": "把 1141 份企业项目文档整理成「原文提取 + OCR 识别 + 索引摘要」三级知识库，用 DeepSeek 会话流水线维护。",
+        "tech": [
+          "DeepSeek API",
+          "PowerShell",
+          "OCR",
+          "RAG"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "原始资料（1141 份文档 + 截图）\n├─ 01-原文提取：去格式纯文本（0001~0214 编号）\n├─ 02-OCR 识别：图片文字识别与表格解析\n└─ 00-索引与摘要：文件索引映射 + 三类主题摘要\n维护流水线：读取 → 文本提取 → OCR → 摘要 → 入库（DeepSeek 会话）",
+        "result": "覆盖日报/周报、12 个专项项目、培训与产品材料；作为日常文档处理与报告生成的上下文基础；关键手册可按编号即查即用",
+        "role": "独立设计与维护：定义三级结构、编写 PowerShell 处理流水线、用 DeepSeek 会话完成提取与摘要"
+      },
+      {
+        "name": "PythonKnowledgeGenerator：AI 知识生产流水线",
+        "desc": "基于 DeepSeek API 的 Python 知识自动生成器：分层架构、断点续跑、日志追踪与质量统计。",
+        "tech": [
+          "PowerShell",
+          "DeepSeek API",
+          "流水线"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "Config/Topics.json（任务库）\n  ↓ Build-Prompt —— 生成提示词\n  ↓ Invoke-DeepSeek —— HTTP 调用 API\n  ↓ Output —— 分类保存 Markdown 知识库\nCache —— 断点续跑状态    Logs —— 运行日志    Config —— 参数配置",
+        "result": "批量自动生成分类 Python 知识库；断电/失败后从断点续跑、不重复消耗 Token；V1→V3 多版本迭代（6 个脚本版本），带质量统计报告",
+        "role": "独立开发：V1→V3.3.1 共 6 个版本迭代，设计断点续跑、日志与质量统计机制"
+      },
+      {
+        "name": "STM32 小车巡迹与云台打靶（电子设计大赛）",
+        "desc": "实现小车自动巡迹与云台目标打靶，负责电路焊接与巡迹模块代码编写。",
+        "tech": [
+          "STM32",
+          "C",
+          "电路焊接"
+        ],
+        "link": "",
+        "featured": true,
+        "arch": "STM32 主控\n├─ 巡迹模块 —— 循迹传感器 + 巡线算法\n├─ 云台舵机 —— 目标锁定与打靶\n└─ 电路板焊接与整机调试",
+        "result": "自动巡线稳定；云台打靶精度 1.2mm；获电子设计竞赛贵州赛区成功参赛奖",
+        "role": "硬件与固件：负责电路焊接与巡迹模块代码编写（团队赛）"
+      },
+      {
+        "name": "“喜虫天降”挑战杯项目（省级一等奖）",
+        "desc": "作为团队成员参与数据收集与线上平台、小程序的功能设计；项目获省级一等奖（2023）。",
+        "tech": [
+          "小程序",
+          "数据整理"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "项目组分工协作\n├─ 数据收集与汇总分类\n├─ 线上平台功能设计\n└─ 小程序功能设计",
+        "result": "项目获挑战杯省级一等奖（2023）；本人负责数据整理与平台功能设计，锻炼跨团队沟通与数据可视化能力",
+        "role": "团队成员：数据收集、汇总分类与平台功能设计"
+      },
+      {
+        "name": "物联网终端设备接入管理系统（项目负责人）",
+        "desc": "作为项目负责人统筹物联网终端设备接入管理系统的研发（2023）。",
+        "tech": [
+          "物联网",
+          "C / C++"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "终端设备（各类传感器/网关）\n  ↓ 接入层：协议适配与注册\n  ↓ 管理系统：设备台账、状态监控、告警",
+        "result": "作为项目负责人统筹研发全程，负责进度管理、分工协调与交付（2023）",
+        "role": "项目负责人：进度管理、分工协调与交付统筹"
+      },
+      {
+        "name": "基于 dlib 的人脸识别系统",
+        "desc": "使用 PyCharm 与 dlib 库实现人脸特征提取、模型训练与识别匹配。",
+        "tech": [
+          "Python",
+          "dlib"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "人脸图片 → dlib 特征点提取\n  ↓ 模型训练 → 特征矢量图库\n新面孔 → 特征比对 → 识别结果",
+        "result": "实现人脸特征矢量图生成与识别匹配，负责调试与性能优化",
+        "role": "独立开发：特征提取、模型训练与识别匹配，负责调试与性能优化"
+      },
+      {
+        "name": "数字时钟与燃气灶熄火保护装置",
+        "desc": "标准 TTL 逻辑芯片设计数字时钟；基于热电偶传感器设计燃气灶熄火保护装置。",
+        "tech": [
+          "TTL 逻辑",
+          "Multisim"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "TTL 逻辑芯片 → 数字时钟（星期/上下午显示）\n热电偶传感器 → 熄火检测 → 保护动作",
+        "result": "完成电路仿真与实物验证；负责项目统筹与进度跟踪",
+        "role": "项目统筹：分工协调、电路仿真与实物验证"
+      },
+      {
+        "name": "EDA：自动售货机设计与仿真",
+        "desc": "使用 Verilog HDL 在 ModelSim 中独立开发自动售货机控制逻辑。",
+        "tech": [
+          "Verilog HDL",
+          "ModelSim"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "投币/选择输入\n  ↓ 状态机：空闲 → 投币 → 出货 → 找零\nModelSim 功能仿真验证",
+        "result": "独立完成控制逻辑与状态机设计，功能仿真通过",
+        "role": "独立开发：控制逻辑与状态机设计、功能仿真"
+      },
+      {
+        "name": "人口老龄化对贵阳经济增长的影响（市场调研大赛）",
+        "desc": "基于统计与计量经济学模型建立基准回归，探究人口老龄化对 GDP 的影响。",
+        "tech": [
+          "计量经济学",
+          "MATLAB"
+        ],
+        "link": "",
+        "featured": false,
+        "arch": "国家统计局 / 贵阳统计局数据\n  ↓ 数据清洗与变量构造\n  ↓ 基准回归模型（计量经济学）\n  ↓ 影响评估与结论",
+        "result": "实证结论：人口老龄化对贵阳 GDP 增长影响微弱；获市场调研大赛参赛经历",
+        "role": "建模分析：数据清洗、回归模型构建与结论分析"
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "作品集",
+    "subtitle": "我的作品与项目架构（点击卡片展开架构详情）",
+    "list": [
+      {
+        "title": "企业文档知识库（DeepSeek 驱动）",
+        "type": "AI 项目",
+        "desc": "DeepSeek 驱动的三级知识库：1141 份文档 → 原文提取 / OCR / 索引摘要，支持文档处理与报告生成。",
+        "link": "",
+        "image": "",
+        "arch": "原始资料（1141 份文件）\n  ↓ 读取流水线\n├─ 01-原文提取/ —— 去格式纯文本（编号 0001~0214）\n├─ 02-OCR识别结果/ —— 图片文字与表格解析\n└─ 00-索引与摘要/ —— 索引映射 + 主题摘要\nDeepSeek 会话维护 + 后续扩充规范"
+      },
+      {
+        "title": "PythonKnowledgeGenerator",
+        "type": "AI 项目",
+        "desc": "DeepSeek API 知识生成流水线（PowerShell）：分层架构 + 断点续跑 + 质量统计。",
+        "link": "",
+        "image": "",
+        "arch": "PythonKnowledgeGenerator/\n├── Config/   ← Topics.json 任务库、Settings\n├── Cache/    ← 生成状态（断点续跑）\n├── Logs/     ← 运行日志\n├── Output/   ← 分类知识库（最终产品）\n└── *.ps1     ← 流水线主程序（6 个版本迭代）\n函数：Write-Log / Invoke-DeepSeek / Build-Prompt\n      Load-Cache / Save-Cache / Get-ContentInfo"
+      },
+      {
+        "title": "DeepSeek Chat 客户端（PowerShell）",
+        "type": "AI 项目",
+        "desc": "命令行多轮对话客户端：角色预设、历史上下文与请求模板分离。",
+        "link": "",
+        "image": "",
+        "arch": "DeepSeekChat.ps1\n├─ roles.json ────── 角色预设\n├─ chat_history.json ── 对话上下文\n├─ body.json ────── API 请求模板\n└─ response.json ─── 响应缓存"
+      },
+      {
+        "title": "HarnessWeb 个人主页（本网站）",
+        "type": "Web 项目",
+        "desc": "原生 ES Module 单页应用：hash 路由、中英双语、交互粒子背景，零依赖零构建。",
+        "link": "",
+        "image": "",
+        "arch": "src/\n├─ index.html ───── SPA 唯一入口\n├─ js/\n│  ├─ main.js ───── 装配入口\n│  ├─ router.js ─── hash 路由 + 视图切换\n│  ├─ i18n.js ───── 双语词典\n│  ├─ background.js ── 粒子背景\n│  └─ views/ ────── 每视图一个模块\n├─ i18n/ ── zh.json / en.json（内容与代码分离）\n└─ assets/ ── 头像与证书图片"
+      },
+      {
+        "title": "智能避障巡检小车（毕业设计）",
+        "type": "硬件作品",
+        "desc": "STM32F407 + 三路超声波避障 + ESP32-CAM 图传 + 蓝牙双模式，全流程独立完成。",
+        "link": "",
+        "image": "",
+        "arch": "STM32F407VET6 主控\n├─ HC-SR04 ×3 ── 多方向超声波测距\n├─ L298N ────── PWM 电机驱动\n├─ ESP32-CAM ── WiFi 视频推流 → 手机端\n├─ HC05 ─────── 蓝牙遥控 / 模式互锁\n└─ OLED ─────── 状态显示\n电源：12V → 5V → 3.3V 二级降压"
+      }
+    ]
+  },
+  "contact": {
+    "title": "联系我",
+    "subtitle": "想聊聊 AI 应用开发、嵌入式硬件或合作机会？欢迎通过这些方式联系我",
+    "open": "打开",
+    "copy": "复制",
+    "copied": "已复制 ✓",
+    "items": [
+      {
+        "icon": "📧",
+        "label": "常用邮箱",
+        "value": "2684016264@qq.com",
+        "link": "mailto:2684016264@qq.com"
+      },
+      {
+        "icon": "📱",
+        "label": "电话",
+        "value": "17785687216",
+        "link": "tel:17785687216"
+      },
+      {
+        "icon": "📍",
+        "label": "所在地",
+        "value": "贵阳 · 贵州大学",
+        "link": ""
+      },
+      {
+        "icon": "🎓",
+        "label": "毕业院校",
+        "value": "贵州大学 · 电子信息科学与技术（2026 届）",
+        "link": ""
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} 刘秋靖 · 贵阳 · Built with DeepSeek"
+  }
+}
