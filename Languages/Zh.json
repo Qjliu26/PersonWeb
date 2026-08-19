@@ -205,7 +205,7 @@
   },
   "skills": {
     "title": "技能",
-    "subtitle": "按 AI 应用开发岗位需求排序（数值为自评熟练度，依据实际项目产出）",
+    "subtitle": "由 AI 依据实际项目产出分析总结的技能清单",
     "categories": [
       {
         "icon": "💻",
@@ -451,7 +451,7 @@
   },
   "projects": {
     "title": "项目",
-    "subtitle": "点击卡片展开架构与效果详情",
+    "subtitle": "项目清单：名称、我的角色、量化成果与总体架构",
     "linkLabel": "查看项目",
     "roleLabel": "我的角色",
     "archLabel": "总体架构",
@@ -593,7 +593,7 @@
   },
   "portfolio": {
     "title": "作品",
-    "subtitle": "每个作品在做什么、怎么做的、达到了什么效果（点击展开）",
+    "subtitle": "每个作品在做什么、怎么做的、达到了什么效果",
     "list": [
       {
         "title": "AI 企业知识库",
