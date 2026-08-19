@@ -288,8 +288,12 @@
             "level": 80
           },
           {
-            "name": "Git / GitHub",
+            "name": "Git",
             "level": 75
+          },
+          {
+            "name": "GitHub",
+            "level": 70
           },
           {
             "name": "VMware",
@@ -326,7 +330,11 @@
             "level": 80
           },
           {
-            "name": "Proteus / Multisim",
+            "name": "Proteus",
+            "level": 75
+          },
+          {
+            "name": "Multisim",
             "level": 75
           },
           {
@@ -378,7 +386,11 @@
             "level": 60
           },
           {
-            "name": "Premiere / AE",
+            "name": "Premiere",
+            "level": 65
+          },
+          {
+            "name": "After Effects",
             "level": 60
           },
           {
@@ -392,7 +404,15 @@
         "name": "办公协作",
         "items": [
           {
-            "name": "WPS / Word / PPT",
+            "name": "WPS",
+            "level": 90
+          },
+          {
+            "name": "Word",
+            "level": 90
+          },
+          {
+            "name": "PPT",
             "level": 90
           },
           {
@@ -400,12 +420,20 @@
             "level": 80
           },
           {
-            "name": "Outlook / Gmail",
+            "name": "Outlook",
+            "level": 80
+          },
+          {
+            "name": "Gmail",
             "level": 75
           },
           {
-            "name": "企业微信 / 钉钉",
-            "level": 75
+            "name": "企业微信",
+            "level": 80
+          },
+          {
+            "name": "钉钉",
+            "level": 80
           }
         ]
       }
