@@ -6,10 +6,10 @@
 import { t, applyStatic } from './I18n.js';
 import views from './Views/Index.js';
 
-let current = null;
+let routerCurrent = null;
 
 export function currentViewName() {
-  return current;
+  return routerCurrent;
 }
 
 /** 解析当前 hash 对应的视图名（非法值回退 home） */
@@ -22,7 +22,7 @@ export function parseHash() {
 export function renderView(name) {
   const view = views[name];
   if (!view) return;
-  current = name;
+  routerCurrent = name;
 
   const main = document.getElementById('view');
   main.innerHTML = view.render(t);

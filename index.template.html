@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="preload" as="image" href="Assets/Images/avatar.jpg">
+  <meta name="description" content="刘秋靖的个人主页：贵州大学电子信息科学与技术 2026 届本科生，嵌入式开发、硬件设计与学科竞赛经历">
+  <title>刘秋靖 · 个人主页</title>
+  <style>
+/*__STYLES__*/
+  </style>
+</head>
+<body>
+
+  <!-- 粒子背景：SPA 全程常驻，不随视图切换重建 -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 顶部导航：毛玻璃、紧凑、固定 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#/home" data-i18n="nav.logo">刘秋靖 · 个人主页</a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#/home" data-nav="home" data-i18n="nav.home">首页</a>
+        <a href="#/about" data-nav="about" data-i18n="nav.about">关于</a>
+        <a href="#/skills" data-nav="skills" data-i18n="nav.skills">技能</a>
+        <a href="#/projects" data-nav="projects" data-i18n="nav.projects">项目</a>
+        <a href="#/portfolio" data-nav="portfolio" data-i18n="nav.portfolio">作品</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="lang-toggle" data-lang-toggle>EN</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="菜单" data-i18n-attr="aria-label:nav.menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 视图容器：由 router 按 hash 渲染；初始为加载占位，JS 渲染后替换 -->
+  <main class="container main-view" id="view" aria-live="polite">
+    <div class="boot-hint">
+      <span class="boot-spinner"></span>
+      <p>正在加载…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footer.copyright">© {year} 刘秋靖 · 用 ♥ 打造</p>
+    </div>
+  </footer>
+
+  <script>
+/*__SCRIPTS__*/
+  </script>
+</body>
+</html>

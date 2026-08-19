@@ -7,10 +7,1103 @@
   <link rel="preload" as="image" href="Assets/Images/avatar.jpg">
   <meta name="description" content="刘秋靖的个人主页：贵州大学电子信息科学与技术 2026 届本科生，嵌入式开发、硬件设计与学科竞赛经历">
   <title>刘秋靖 · 个人主页</title>
-  <link rel="stylesheet" href="Styles/Base.css">
-  <link rel="stylesheet" href="Styles/Layout.css">
-  <link rel="stylesheet" href="Styles/Components.css">
-  <link rel="stylesheet" href="Styles/Views.css">
+  <style>
+/* ============================================================
+   base.css — 设计变量、重置、基础排版（Apple 风格深色）
+   ============================================================ */
+
+:root {
+  /* 色板（深色模式） */
+  --bg: #0b0b0f;
+  --surface: rgba(28, 28, 30, 0.55);
+  --surface-strong: rgba(28, 28, 30, 0.88);
+  --separator: rgba(84, 84, 88, 0.35);
+  --text-primary: #f5f5f7;
+  --text-secondary: #b3b3b9;
+  --accent: #0a84ff;
+  --accent-2: #5e5ce6;
+  --accent-soft: rgba(10, 132, 255, 0.14);
+  --green: #30d158;
+
+  /* 形状与尺寸 */
+  --radius-card: 18px;
+  --radius-btn: 980px;
+  --header-h: 52px;
+  --maxw: 1440px;
+
+  /* 动效 */
+  --ease-out: cubic-bezier(0.32, 0.72, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg); scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1; /* 内容位于粒子背景之上 */
+}
+
+/* 粒子背景层 */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+::selection { background: rgba(10, 132, 255, 0.4); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2c2c2e; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3c; }
+
+h1, h2, h3 { font-weight: 700; letter-spacing: 0.2px; }
+p { color: var(--text-secondary); }
+a { color: var(--accent); }
+
+img { max-width: 100%; display: block; }
+/* ============================================================
+   layout.css — 导航、主视图、页脚、布局容器
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- 顶部导航（毛玻璃、固定、紧凑） ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 11, 15, 0.65);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--separator);
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  gap: 16px;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.nav-links { display: flex; gap: 2px; }
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  transition: color 0.18s, background 0.18s;
+}
+
+.nav-links a:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.06); }
+
+.nav-links a.active { color: #fff; background: rgba(255, 255, 255, 0.1); }
+
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+.lang-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-btn);
+  padding: 5px 14px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.18s, filter 0.18s;
+}
+
+.lang-toggle:hover { background: rgba(255, 255, 255, 0.14); }
+
+/* 汉堡按钮（移动端） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--separator);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--text-primary);
+  border-radius: 1px;
+  transition: transform 0.25s var(--ease-out), opacity 0.25s;
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ---------- 主视图 ---------- */
+.main-view {
+  flex: 1;
+  padding-top: 12px;
+  padding-bottom: 48px;
+}
+
+/* 视图切换动画 */
+.view-enter {
+  animation: viewIn 0.3s var(--ease-out) both;
+}
+
+/* 首屏加载占位（词典加载完成前显示） */
+.boot-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 90px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.boot-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--accent);
+  animation: bootSpin 0.8s linear infinite;
+}
+
+@keyframes bootSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes viewIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px solid var(--separator);
+  padding: 14px 0 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.site-footer p { color: var(--text-secondary); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+}
+
+@media (max-width: 640px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(11, 11, 15, 0.96);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--separator);
+    padding: 12px 20px 16px;
+    display: none;
+  }
+
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 16px; font-size: 16px; }
+}
+/* ============================================================
+   components.css — 通用组件：按钮、卡片、网格、标签等
+   ============================================================ */
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s var(--ease-out), box-shadow 0.2s var(--ease-out), background 0.2s;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(10, 132, 255, 0.35);
+}
+
+.btn-primary:hover { box-shadow: 0 6px 24px rgba(10, 132, 255, 0.5); }
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border-color: var(--separator);
+}
+
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+
+.btn-sm { padding: 7px 16px; font-size: 12.5px; }
+
+.btn.copied { color: var(--green); border-color: rgba(48, 209, 88, 0.6); }
+
+/* ---------- 卡片（毛玻璃） ---------- */
+.card {
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-card);
+  padding: 22px;
+  transition: transform 0.2s var(--ease-out), border-color 0.2s, background 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(120, 120, 128, 0.55);
+  background: rgba(32, 32, 35, 0.62);
+}
+
+/* ---------- 网格 ---------- */
+.grid { display: grid; gap: 16px; align-items: start; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+.center { text-align: center; margin-top: 24px; }
+
+/* ---------- 统一项目/作品卡片（默认展开、高度与行数统一） ---------- */
+.pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  height: 100%;
+}
+
+.pcard-title {
+  font-size: 14.5px;
+  line-height: 1.4;
+  min-height: 2.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcard-desc {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  min-height: 3.2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcard-field { display: flex; flex-direction: column; gap: 2px; }
+
+.pcard-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64b5ff;
+  letter-spacing: 0.5px;
+}
+
+.pcard-field p {
+  font-size: 12.5px;
+  min-height: 3em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcard .arch-box { font-size: 11.5px; padding: 10px 12px; line-height: 1.55; }
+
+.pcard .portfolio-cover { height: 72px; font-size: 14px; letter-spacing: 2px; }
+
+.pcard .portfolio-type { margin: 0; }
+
+.pcard .tags { min-height: 24px; }
+
+/* ---------- 分页 ---------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.page-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--separator);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.page-btn:hover:not([disabled]) { background: rgba(255, 255, 255, 0.12); border-color: var(--border-strong); }
+
+.page-btn[disabled] { opacity: 0.35; cursor: default; }
+
+.page-info { font-size: 13px; color: var(--text-secondary); }
+
+/* ---------- 区块标题 ---------- */
+.section { margin-top: 36px; }
+.section:first-of-type { margin-top: 0; }
+
+.section-head { margin-bottom: 12px; }
+
+.section-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+/* ---------- 标签 ---------- */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: var(--radius-btn);
+  background: var(--accent-soft);
+  color: #64b5ff;
+  border: 1px solid rgba(10, 132, 255, 0.25);
+}
+
+/* ---------- 标签芯片（兴趣） ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  padding: 8px 18px;
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--separator);
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+/* ---------- 状态点 ---------- */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ---------- 项目卡片（含展开详情） ---------- */
+.project-card { display: flex; flex-direction: column; gap: 8px; }
+
+.project-card h3 { font-size: 16.5px; }
+
+.project-card p { font-size: 14px; flex: 1; }
+
+.project-link {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-link:hover { text-decoration: underline; }
+
+/* 展开头部（整块可点击） */
+.expand-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+}
+
+.expand-head h3 { flex: 1; }
+
+.expand-hint {
+  font-size: 12px;
+  color: var(--accent);
+  white-space: nowrap;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.expand-arrow { display: inline-block; }
+
+/* 可展开卡片：整卡可点击 */
+.expandable { cursor: pointer; }
+.expandable .project-link { cursor: pointer; }
+
+/* 展开主体：grid-rows 0fr→1fr 平滑动画 */
+.expand-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s var(--ease-out);
+}
+
+.expand-body > .expand-inner { overflow: hidden; }
+
+.expandable.open .expand-body { grid-template-rows: 1fr; }
+
+.expand-inner h4 {
+  font-size: 13.5px;
+  color: var(--text-primary);
+  margin: 8px 0 6px;
+  font-weight: 700;
+}
+
+/* 架构图代码块 */
+.arch-box {
+  font-family: Consolas, "Courier New", "Microsoft YaHei", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #a8cdf8;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--separator);
+  border-radius: 12px;
+  padding: 14px 16px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.detail-result {
+  font-size: 14px;
+  color: var(--text-primary) !important;
+}
+
+/* ---------- 技能 ---------- */
+.skill-cat-title {
+  font-size: 19px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 28px;
+}
+
+.skill-item {
+  display: grid;
+  grid-template-columns: 150px 1fr 34px;
+  align-items: center;
+  gap: 12px;
+  min-height: 30px;
+}
+
+.skill-name {
+  font-size: 15px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-bar {
+  height: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+  transition: width 0.6s var(--ease-out);
+}
+
+.skill-level { font-size: 12.5px; color: var(--text-secondary); text-align: right; }
+
+/* ---------- 时间线 ---------- */
+.timeline { position: relative; margin-top: 6px; }
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--separator);
+}
+
+.timeline-item { position: relative; padding: 0 0 22px 32px; }
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 10px rgba(10, 132, 255, 0.5);
+}
+
+.timeline-time { font-size: 12.5px; color: var(--accent); font-weight: 600; }
+
+.timeline-content h3 { font-size: 16px; margin: 2px 0 3px; }
+
+.timeline-content p { font-size: 14px; }
+
+/* ---------- 个人特质卡（全宽一行、四卡等高） ---------- */
+.traits-grid { align-items: stretch; }
+
+.trait-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 16px;
+}
+
+.trait-icon { font-size: 28px; margin-bottom: 8px; }
+
+.trait-card h3 { font-size: 15.5px; margin-bottom: 4px; }
+
+.trait-card p {
+  flex: 1;
+  font-size: 13.5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
+
+/* ---------- 荣誉与奖项 ---------- */
+.honor-card { padding: 14px; display: flex; flex-direction: column; }
+
+.honor-thumb {
+  height: 130px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #16324a, #1c2a5e);
+  flex-shrink: 0;
+}
+
+.honor-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.honor-thumb:hover img { transform: scale(1.04); }
+
+.honor-thumb .honor-emoji { font-size: 30px; }
+
+.honor-card h3 { font-size: 14px; margin: 10px 0 6px; flex: 1; }
+
+.honor-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.honor-level {
+  font-size: 11px;
+  padding: 1px 9px;
+  border-radius: var(--radius-btn);
+  background: var(--accent-soft);
+  color: #64b5ff;
+  border: 1px solid rgba(10, 132, 255, 0.25);
+}
+
+/* ---------- 联系卡片 ---------- */
+.contact-card { display: flex; align-items: center; gap: 16px; }
+
+.contact-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--separator);
+  border-radius: 14px;
+}
+
+.contact-info { flex: 1; min-width: 0; }
+
+.contact-info h3 { font-size: 15.5px; }
+
+.contact-value { font-size: 13.5px; word-break: break-all; }
+
+.contact-action { flex-shrink: 0; }
+
+/* ---------- 作品集卡片（含架构展开） ---------- */
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+}
+
+.portfolio-cover {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #16324a, #1c2a5e);
+  cursor: pointer;
+}
+
+.portfolio-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-card:nth-child(2) .portfolio-cover { background: linear-gradient(135deg, #1c2a5e, #2a1c5e); }
+.portfolio-card:nth-child(3) .portfolio-cover { background: linear-gradient(135deg, #2a4a1c, #1c5e50); }
+.portfolio-card:nth-child(4) .portfolio-cover { background: linear-gradient(135deg, #4a2a3a, #5e3a1c); }
+
+.portfolio-card h3 { margin: 16px 18px 0; font-size: 15.5px; }
+
+.portfolio-card p { margin: 5px 18px 0; font-size: 13.5px; }
+
+.portfolio-type {
+  margin: 10px 18px 0;
+  align-self: flex-start;
+  font-size: 11.5px;
+  color: #64b5ff;
+  border: 1px solid rgba(10, 132, 255, 0.3);
+  padding: 2px 10px;
+  border-radius: var(--radius-btn);
+  background: var(--accent-soft);
+}
+
+.portfolio-card .expand-head { margin: 12px 18px 0; padding-bottom: 4px; }
+
+.portfolio-card .expand-body { margin: 0 18px 16px; }
+
+.portfolio-card .expand-body > .expand-inner { overflow: hidden; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1200px) {
+  .grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .skill-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+  .skill-item { grid-template-columns: 118px 1fr 30px; }
+  .contact-card { flex-wrap: wrap; }
+  .contact-action { width: 100%; }
+  .contact-action .btn { width: 100%; }
+}
+/* ============================================================
+   views.css — 各视图专属样式
+   ============================================================ */
+
+/* ---------- 首页：左右结构（个人信息 | 当前状态），一屏展示 ---------- */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 44px;
+  align-items: center;
+  padding: 12px 0 12px;
+}
+
+.hero-left { text-align: left; }
+
+.hero-identity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.hero-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(10, 132, 255, 0.28);
+  flex-shrink: 0;
+}
+
+.hero-greeting { font-size: 15px; color: var(--text-secondary); }
+
+.hero-name {
+  font-size: 40px;
+  line-height: 1.1;
+  margin: 2px 0 2px;
+  letter-spacing: 1px;
+  background: linear-gradient(120deg, #fff, #b8d8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-tagline {
+  font-size: 16.5px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero-intro {
+  margin: 8px 0 8px;
+  font-size: 14px;
+  max-width: 560px;
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--separator);
+  border-radius: var(--radius-btn);
+  padding: 6px 15px;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/* 首页左下角联系方式 */
+.hero-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.hero-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.hero-contact-item:hover { color: var(--accent); }
+
+/* 右侧：状态竖排小卡 */
+.status-stack { display: flex; flex-direction: column; gap: 8px; }
+
+.status-card-row {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 11px 16px;
+}
+
+.status-card-row .status-icon { font-size: 20px; margin: 0; line-height: 1.3; }
+
+.status-card-row h3 { font-size: 14.5px; margin-bottom: 2px; }
+
+.status-card-row p { font-size: 12.5px; }
+
+/* ---------- 首页精选项目：圆点编号单列列表 ---------- */
+.home-featured { margin-top: 0; }
+
+.home-featured .section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.featured-list { display: flex; flex-direction: column; gap: 8px; }
+
+.featured-item { padding: 12px 16px; }
+
+.featured-item .expand-head h3 { font-size: 15.5px; }
+
+.featured-desc {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 32px;
+}
+
+.featured-desc p {
+  font-size: 13.5px;
+  flex: 1;
+  margin: 0;
+}
+
+.bullet {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 2px 10px rgba(10, 132, 255, 0.45);
+}
+
+/* ---------- 技能页：顶部类别标签 + 居中雷达图 ---------- */
+.skills-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.skill-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.skill-tab {
+  padding: 9px 18px;
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--separator);
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.skill-tab:hover { border-color: rgba(120, 120, 128, 0.55); }
+
+.skill-tab.active {
+  border-color: rgba(10, 132, 255, 0.6);
+  background: var(--accent-soft);
+  color: #fff;
+}
+
+.radar-panel {
+  width: 100%;
+  max-width: 640px;
+  padding: 20px 22px;
+}
+
+.radar-title {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.radar-wrap svg { width: 100%; height: auto; display: block; }
+
+.radar-grid { fill: none; stroke: rgba(255, 255, 255, 0.09); }
+.radar-axis { stroke: rgba(255, 255, 255, 0.1); stroke-width: 1; }
+.radar-area {
+  fill: rgba(10, 132, 255, 0.3);
+  stroke: none;
+}
+.radar-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.radar-label {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.radar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.legend-chip { font-size: 12.5px; padding: 5px 13px; }
+
+/* ---------- 关于页：左（介绍/荣誉/特质/兴趣）右（时间线） ---------- */
+.about-top {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.about-right .timeline { margin-top: 2px; }
+
+/* ---------- 页面头（子页面） ---------- */
+.page-head { padding: 28px 0 6px; text-align: center; }
+
+.page-title {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.page-subtitle { font-size: 14.5px; color: var(--text-secondary); margin-top: 4px; }
+
+/* ---------- 关于页简介卡 ---------- */
+.about-card { font-size: 14.5px; }
+.about-card p { color: var(--text-primary); }
+.about-card p + p { margin-top: 12px; }
+
+/* ---------- 技能评分依据 ---------- */
+.skills-note-text { font-size: 14px; color: var(--text-primary); margin-bottom: 12px; }
+
+.skills-note-rules { display: flex; flex-direction: column; gap: 10px; }
+
+.rule-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 13.5px;
+}
+
+.rule-level {
+  flex-shrink: 0;
+  min-width: 76px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64b5ff;
+  background: var(--accent-soft);
+  border: 1px solid rgba(10, 132, 255, 0.3);
+  border-radius: var(--radius-btn);
+  padding: 2px 10px;
+}
+
+/* ---------- 联系页布局 ---------- */
+.contact-grid { max-width: 860px; margin: 0 auto; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 900px) {
+  .hero-split { grid-template-columns: 1fr; gap: 24px; }
+  .about-top { grid-template-columns: 1fr; }
+  .hero-name { font-size: 40px; }
+  .page-title { font-size: 30px; }
+}
+
+@media (max-width: 640px) {
+  .hero-identity { flex-direction: column; text-align: center; gap: 12px; }
+  .hero-left { text-align: center; }
+  .hero-actions { justify-content: center; }
+  .hero-name { font-size: 34px; }
+  .home-featured .section-head { flex-direction: column; align-items: flex-start; }
+  .featured-desc { flex-direction: column; align-items: flex-start; gap: 8px; padding-left: 0; }
+}
+
+  </style>
 </head>
 <body>
 
@@ -51,6 +1144,2296 @@
     </div>
   </footer>
 
-  <script type="module" src="Modules/Main.js"></script>
+  <script>
+/* ===== 打包脚本（由 Launcher/Build.py 自动生成，请勿手改） ===== */
+/* Dicts — 自动生成，请勿手改（由 Launcher/Build.py 从 Languages/*.json 打包） */
+const DICTS = {
+  zh: {
+  "meta": {
+    "homeTitle": "刘秋靖 · 个人主页",
+    "aboutTitle": "关于我 · 刘秋靖",
+    "skillsTitle": "技能 · 刘秋靖",
+    "projectsTitle": "项目 · 刘秋靖",
+    "portfolioTitle": "作品集 · 刘秋靖",
+    "contactTitle": "联系我 · 刘秋靖",
+    "description": "刘秋靖的个人主页：AI 应用与工具链开发、嵌入式硬件背景，DeepSeek API 工程化实践"
+  },
+  "nav": {
+    "menu": "菜单",
+    "home": "首页",
+    "about": "关于",
+    "skills": "技能",
+    "projects": "项目",
+    "portfolio": "作品",
+    "contact": "联系",
+    "logo": "刘秋靖 · 个人主页"
+  },
+  "hero": {
+    "avatarAlt": "刘秋靖的头像",
+    "greeting": "你好，我是",
+    "name": "刘秋靖",
+    "tagline": "AI 应用开发 · 自动化工具链 · 嵌入式背景",
+    "intro": "贵州大学电子信息科学与技术 2026 届毕业生。主攻 AI 应用与工具链开发（DeepSeek API、自动化脚本、Web 应用），兼具嵌入式硬件与学科竞赛背景，持续深耕 AI 应用方向。",
+    "status": "2026 届毕业生 · 在职 · 坐标贵阳",
+    "ctaProjects": "查看我的项目",
+    "ctaContact": "联系我",
+    "ctaAbout": "了解我"
+  },
+  "status": {
+    "title": "当前状态",
+    "subtitle": "我最近在做什么",
+    "items": [
+      {
+        "icon": "🎯",
+        "label": "当前目标",
+        "text": "在 AI 应用 / 工具链方向持续深耕，用 AI 解决真实工程问题"
+      },
+      {
+        "icon": "💼",
+        "label": "近期实践",
+        "text": "个人 AI 工具链实践：DeepSeek 驱动的知识库与自动化流水线"
+      },
+      {
+        "icon": "🤖",
+        "label": "正在探索",
+        "text": "DeepSeek API 工程化：RAG 知识库、自动化流水线、智能体"
+      }
+    ]
+  },
+  "featured": {
+    "title": "精选项目",
+    "subtitle": "AI 工具链与硬件实践的代表作",
+    "viewAll": "查看全部项目"
+  },
+  "about": {
+    "title": "关于我",
+    "subtitle": "我是谁，我在做什么",
+    "p1": "你好！我是刘秋靖（土家族），来自贵州铜仁，贵州大学电子信息科学与技术专业 2026 届毕业生。从电路板焊接、单片机开发到 AI 工具链实践，我习惯把想法亲手变成能跑起来的作品。",
+    "p2": "2026 年 6 月毕业后与企业签订无固定期限劳动合同。工作之余持续 AI 工具链实践（DeepSeek 知识库、自动化流水线、Web 应用），大学期间获得高教杯先进成图大赛国家级二等奖、挑战杯省级一等奖等荣誉。持续深耕并关注 AI 应用 / 工具链方向的职业机会。",
+    "traitsTitle": "个人特质",
+    "traits": [
+      {
+        "icon": "🔧",
+        "label": "动手能力强",
+        "text": "独立完成电路设计、PCB 焊接与整机软硬件调试"
+      },
+      {
+        "icon": "📈",
+        "label": "学习能力强",
+        "text": "3 个月跨专业备赛，拿下国家级二等奖 + 省级二等奖"
+      },
+      {
+        "icon": "🤝",
+        "label": "组织协调",
+        "text": "校学生会干事、轮滑社团团支书、课程小组组长"
+      },
+      {
+        "icon": "⭐",
+        "label": "踏实细致",
+        "text": "40h+ 疫情防控志愿服务，获贵州大学志愿服务之星"
+      }
+    ],
+    "honorsTitle": "荣誉与奖项",
+    "honorsSubtitle": "共 7 项省级及以上/校级荣誉，点击证书可查看原图",
+    "honors": [
+      {
+        "title": "高教杯先进成图大赛 · 水利赛道 二等奖",
+        "time": "2025.07",
+        "level": "国家级",
+        "image": "Assets/Images/certs/先进成图大赛.jpg"
+      },
+      {
+        "title": "贵州省第六届结构设计竞赛 · 二等奖",
+        "time": "2025.06",
+        "level": "省级",
+        "image": "Assets/Images/certs/结构设计竞赛.jpg"
+      },
+      {
+        "title": "挑战杯“喜虫天降”项目 · 省级一等奖",
+        "time": "2023",
+        "level": "省级",
+        "image": ""
+      },
+      {
+        "title": "大唐杯 ICT 基础通识赛 · 贵州赛区三等奖",
+        "time": "2025.06",
+        "level": "省级",
+        "image": "Assets/Images/certs/大唐杯.jpg"
+      },
+      {
+        "title": "全国大学生电子设计竞赛 · 贵州赛区成功参赛奖",
+        "time": "2025.08",
+        "level": "省级",
+        "image": "Assets/Images/certs/电赛.jpg"
+      },
+      {
+        "title": "蓝桥杯 · 省级三等奖",
+        "time": "2025",
+        "level": "省级",
+        "image": ""
+      },
+      {
+        "title": "贵州大学志愿服务之星",
+        "time": "2022.12",
+        "level": "校级",
+        "image": "Assets/Images/certs/志愿服务之星.jpg"
+      }
+    ],
+    "interestsTitle": "兴趣与爱好",
+    "interests": [
+      "羽毛球",
+      "乒乓球",
+      "轮滑",
+      "电子 DIY",
+      "视频剪辑",
+      "技术写作",
+      "AI 工具尝鲜"
+    ],
+    "timelineTitle": "经历",
+    "timeline": [
+      {
+        "time": "2026.07 - 至今",
+        "title": "企业 · 正式员工（无固定期限劳动合同）",
+        "desc": "2026 年 6 月毕业后入职，签订无固定期限劳动合同"
+      },
+      {
+        "time": "2026.03 - 2026.06",
+        "title": "毕业设计：基于 STM32 的智能避障巡检小车",
+        "desc": "独立完成电路设计、PCB 焊接、嵌入式固件与系统调试，已于 2026 年 6 月答辩结题"
+      },
+      {
+        "time": "2025.08",
+        "title": "全国大学生电子设计竞赛 · 贵州赛区成功参赛奖",
+        "desc": "E 题参赛作品：STM32 小车自动巡迹与云台打靶"
+      },
+      {
+        "time": "2025.07",
+        "title": "高教杯先进成图大赛 · 水利赛道二等奖（国家级）",
+        "desc": "第十八届“高教杯”全国大学生先进成图技术与产品信息建模创新大赛"
+      },
+      {
+        "time": "2025.06",
+        "title": "贵州省第六届大学生结构设计竞赛 · 二等奖",
+        "desc": "暨全国大学生结构设计竞赛贵州省分区赛"
+      },
+      {
+        "time": "2025.06",
+        "title": "第十二届大唐杯 · ICT 基础通识赛贵州赛区三等奖",
+        "desc": "全国大学生新一代信息通信技术大赛"
+      },
+      {
+        "time": "2025",
+        "title": "蓝桥杯 · 省级三等奖",
+        "desc": "软件赛"
+      },
+      {
+        "time": "2023.09 - 2024.06",
+        "title": "贵州大学轮滑社团 · 团支书",
+        "desc": "组织社团日常活动与纳新工作"
+      },
+      {
+        "time": "2023 年",
+        "title": "挑战杯“喜虫天降”项目 · 省级一等奖",
+        "desc": "团队成员：数据收集与线上平台、小程序功能设计"
+      },
+      {
+        "time": "2022.12",
+        "title": "疫情防控志愿服务 · 志愿服务之星",
+        "desc": "累计志愿服务 40 小时以上"
+      },
+      {
+        "time": "2022.09 - 2023.06",
+        "title": "贵州大学校学生会宣传部 · 干事",
+        "desc": "参与校园活动宣传策划与物料制作，曾出席学生代表大会"
+      },
+      {
+        "time": "2022.09 - 2026.06",
+        "title": "贵州大学 · 电子信息科学与技术（工学学士）",
+        "desc": "主修电路分析、模拟/数字电子技术、信号与系统、通信原理等"
+      }
+    ]
+  },
+  "skills": {
+    "title": "技能",
+    "subtitle": "按 AI 应用开发岗位需求排序（数值为自评熟练度，依据实际项目产出）",
+    "categories": [
+      {
+        "icon": "💻",
+        "name": "编程语言",
+        "items": [
+          {
+            "name": "Python",
+            "level": 85
+          },
+          {
+            "name": "PowerShell 脚本",
+            "level": 85
+          },
+          {
+            "name": "C",
+            "level": 80
+          },
+          {
+            "name": "Verilog HDL",
+            "level": 80
+          },
+          {
+            "name": "C++",
+            "level": 70
+          },
+          {
+            "name": "JavaScript",
+            "level": 55
+          },
+          {
+            "name": "SQL",
+            "level": 55
+          },
+          {
+            "name": "Java",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🤖",
+        "name": "AI 工具与 API",
+        "items": [
+          {
+            "name": "DeepSeek",
+            "level": 90
+          },
+          {
+            "name": "API 调用与编排",
+            "level": 85
+          },
+          {
+            "name": "Prompt 工程",
+            "level": 80
+          },
+          {
+            "name": "ChatGPT",
+            "level": 80
+          },
+          {
+            "name": "Cursor",
+            "level": 75
+          },
+          {
+            "name": "Codex",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🧰",
+        "name": "开发工具与工程化",
+        "items": [
+          {
+            "name": "VS Code",
+            "level": 85
+          },
+          {
+            "name": "PyCharm",
+            "level": 80
+          },
+          {
+            "name": "Git",
+            "level": 75
+          },
+          {
+            "name": "GitHub",
+            "level": 70
+          },
+          {
+            "name": "VMware",
+            "level": 75
+          },
+          {
+            "name": "Linux",
+            "level": 60
+          },
+          {
+            "name": "SQL Server",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "🔧",
+        "name": "嵌入式与硬件",
+        "items": [
+          {
+            "name": "STM32 单片机",
+            "level": 85
+          },
+          {
+            "name": "Keil MDK",
+            "level": 85
+          },
+          {
+            "name": "PCB 焊接",
+            "level": 85
+          },
+          {
+            "name": "嵌入式系统设计",
+            "level": 80
+          },
+          {
+            "name": "Proteus",
+            "level": 75
+          },
+          {
+            "name": "Multisim",
+            "level": 75
+          },
+          {
+            "name": "FPGA（Quartus II）",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🔬",
+        "name": "仿真与网络",
+        "items": [
+          {
+            "name": "ModelSim",
+            "level": 70
+          },
+          {
+            "name": "Ultiboard",
+            "level": 65
+          },
+          {
+            "name": "Wireshark",
+            "level": 60
+          },
+          {
+            "name": "COMSOL",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🎨",
+        "name": "设计与建模",
+        "items": [
+          {
+            "name": "MATLAB",
+            "level": 70
+          },
+          {
+            "name": "AutoCAD",
+            "level": 85
+          },
+          {
+            "name": "Photoshop",
+            "level": 65
+          },
+          {
+            "name": "SketchUp",
+            "level": 60
+          },
+          {
+            "name": "Premiere",
+            "level": 65
+          },
+          {
+            "name": "After Effects",
+            "level": 60
+          },
+          {
+            "name": "Blender",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "📄",
+        "name": "办公协作",
+        "items": [
+          {
+            "name": "Word",
+            "level": 90
+          },
+          {
+            "name": "PPT",
+            "level": 90
+          },
+          {
+            "name": "Excel",
+            "level": 80
+          },
+          {
+            "name": "Outlook",
+            "level": 80
+          },
+          {
+            "name": "Gmail",
+            "level": 75
+          },
+          {
+            "name": "企业微信",
+            "level": 80
+          },
+          {
+            "name": "钉钉",
+            "level": 80
+          }
+        ]
+      }
+    ],
+    "note": {
+      "title": "评分依据与项目证据",
+      "text": "熟练度为自评值（0-100），基于三个文件夹中的真实项目产出评估，无第三方认证数据。评分三要素：① 实际项目中的使用深度与频率；② 独立完成 / 主导的程度；③ 产出物的复杂度与规模。",
+      "rules": [
+        {
+          "level": "85-90 分",
+          "desc": "有独立完成并多版本迭代的完整项目（DeepSeek：3 个项目落地；PowerShell：6 版流水线 + 客户端 + 知识库脚本；Python：AI 项目核心语言；STM32：毕设全流程）"
+        },
+        {
+          "level": "70-80 分",
+          "desc": "有完整项目实战，能独立完成模块（C、Verilog、Keil、PCB 焊接、Git 等）"
+        },
+        {
+          "level": "50-65 分",
+          "desc": "学习过或辅助使用，能看懂并快速上手（Java、SQL、JavaScript、COMSOL 等）"
+        }
+      ]
+    }
+  },
+  "projects": {
+    "title": "项目",
+    "subtitle": "点击卡片展开架构与效果详情",
+    "linkLabel": "查看项目",
+    "detailLabel": "展开详情",
+    "roleLabel": "我的角色",
+    "archLabel": "总体架构",
+    "resultLabel": "达到的效果",
+    "list": [
+      {
+        "name": "STM32 智能避障巡检小车",
+        "desc": "毕设作品：三路超声波避障 + 摄像头图传 + 蓝牙双模式，独立完成全部软硬件。",
+        "tech": [
+          "STM32F407",
+          "HC-SR04",
+          "ESP32-CAM"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "独立开发者：电路设计、PCB 焊接、固件与调试全流程",
+        "result": "30cm 阈值自主避障、手机实时图传、蓝牙遥控；53 页论文通过答辩",
+        "arch": "STM32F407 主控\n├ HC-SR04×3 超声波避障\n├ ESP32-CAM WiFi 图传\n├ HC05 蓝牙双模式\n└ OLED 状态显示"
+      },
+      {
+        "name": "AI 企业知识库",
+        "desc": "DeepSeek 驱动：1141 份文档整理为三级知识库，支持检索与报告生成。",
+        "tech": [
+          "DeepSeek API",
+          "PowerShell",
+          "OCR"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "独立设计：三级结构与 PowerShell 流水线",
+        "result": "原文/OCR/摘要三级入库；手册按编号即查即用",
+        "arch": "原始资料 1141 份\n├ 01 原文提取（0001~0214）\n├ 02 OCR 识别\n└ 00 索引与摘要\nDeepSeek 会话维护"
+      },
+      {
+        "name": "AI 知识生成流水线",
+        "desc": "DeepSeek API 批量生成分类知识库，断点续跑、日志与质量统计。",
+        "tech": [
+          "PowerShell",
+          "DeepSeek API"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "独立开发：V1→V3.3.1 六个版本迭代",
+        "result": "批量生成知识库；断电续跑不重复消耗 Token",
+        "arch": "Topics.json\n↓ Build-Prompt\n↓ Invoke-DeepSeek\n↓ Output\nCache / Logs / Config"
+      },
+      {
+        "name": "STM32 巡迹打靶小车",
+        "desc": "电赛作品：自动巡线 + 云台打靶，负责电路焊接与巡迹固件。",
+        "tech": [
+          "STM32",
+          "C"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "硬件与固件：焊接 + 巡迹模块代码（团队赛）",
+        "result": "巡线稳定；云台打靶精度 1.2mm；获赛区参与奖",
+        "arch": "STM32 主控\n├ 循迹传感器\n├ 云台舵机\n└ 电路焊接调试"
+      },
+      {
+        "name": "挑战杯 · 助农平台",
+        "desc": "“喜虫天降”项目：数据收集与线上平台、小程序功能设计。",
+        "tech": [
+          "小程序",
+          "数据整理"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "团队成员：数据收集与功能设计",
+        "result": "项目获省级一等奖（2023）",
+        "arch": "数据收集汇总\n├ 线上平台设计\n└ 小程序设计"
+      },
+      {
+        "name": "物联网设备接入管理系统",
+        "desc": "项目负责人统筹研发，覆盖设备注册、状态监控与告警。",
+        "tech": [
+          "物联网",
+          "C / C++"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "项目负责人：进度管理与交付统筹",
+        "result": "统筹系统研发全程并完成交付（2023）",
+        "arch": "终端设备\n↓ 接入层注册\n↓ 管理系统\n（台账/监控/告警）"
+      },
+      {
+        "name": "人脸识别系统",
+        "desc": "基于 dlib：特征提取、模型训练与识别匹配，负责调优。",
+        "tech": [
+          "Python",
+          "dlib"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "独立开发：提取、训练、匹配全流程",
+        "result": "实现特征矢量生成与人脸识别匹配",
+        "arch": "人脸图 → 特征点\n↓ 训练矢量库\n↓ 新脸比对\n→ 识别结果"
+      },
+      {
+        "name": "数字时钟与熄火保护",
+        "desc": "TTL 芯片数字时钟 + 热电偶燃气灶熄火保护装置。",
+        "tech": [
+          "TTL 逻辑",
+          "Multisim"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "项目统筹：分工、仿真与验证",
+        "result": "电路仿真通过并完成实物验证",
+        "arch": "TTL 逻辑 → 数字时钟\n热电偶 → 熄火保护"
+      },
+      {
+        "name": "自动售货机 EDA 仿真",
+        "desc": "Verilog HDL 状态机设计，ModelSim 功能仿真验证。",
+        "tech": [
+          "Verilog HDL",
+          "ModelSim"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "独立开发：状态机与仿真",
+        "result": "投币-出货-找零全流程仿真通过",
+        "arch": "投币/选择\n↓ 状态机\n↓ 出货找零\nModelSim 仿真"
+      },
+      {
+        "name": "人口老龄化实证研究",
+        "desc": "统计与计量模型研究老龄化对贵阳 GDP 的影响。",
+        "tech": [
+          "计量经济学",
+          "MATLAB"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "建模分析：数据清洗与回归模型",
+        "result": "实证结论：老龄化对 GDP 影响微弱",
+        "arch": "统计局数据\n↓ 变量构造\n↓ 基准回归\n→ 结论"
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "作品",
+    "subtitle": "每个作品在做什么、怎么做的、达到了什么效果（点击展开）",
+    "list": [
+      {
+        "title": "AI 企业知识库",
+        "type": "AI 项目",
+        "desc": "DeepSeek 驱动，1141 份文档三级入库，支撑检索与报告。",
+        "link": "",
+        "image": "",
+        "result": "三级知识库落地；手册按编号即查即用，日常报告直接引用",
+        "arch": "原始资料\n├ 01 原文提取\n├ 02 OCR 识别\n└ 00 索引摘要"
+      },
+      {
+        "title": "AI 知识生成流水线",
+        "type": "AI 项目",
+        "desc": "DeepSeek API 批量生成知识库：断点续跑 + 质量统计。",
+        "link": "",
+        "image": "",
+        "result": "批量生成分类知识库；断电续跑不浪费 Token；六版本迭代",
+        "arch": "Topics.json\n↓ Prompt\n↓ API 调用\n↓ Output\nCache/Logs"
+      },
+      {
+        "title": "DeepSeek 命令行客户端",
+        "type": "AI 项目",
+        "desc": "PowerShell 对话客户端：角色预设、上下文记忆、模板分离。",
+        "link": "",
+        "image": "",
+        "result": "命令行多轮对话，无需浏览器；角色与历史独立管理",
+        "arch": "DeepSeekChat.ps1\n├ roles.json\n├ history.json\n└ body.json"
+      },
+      {
+        "title": "个人主页 PersonWeb",
+        "type": "Web 项目",
+        "desc": "零依赖静态 SPA：双语、粒子背景、架构即展。",
+        "link": "",
+        "image": "",
+        "result": "GitHub Pages 免费托管，任何设备打开即用；内容词典驱动",
+        "arch": "index.html\n├ js/ 路由·i18n·粒子\n├ i18n/ 双语词典\n└ assets/ 图片"
+      },
+      {
+        "title": "STM32 智能避障巡检小车",
+        "type": "硬件作品",
+        "desc": "毕设：三路超声波避障、摄像头图传、蓝牙双模式。",
+        "link": "",
+        "image": "",
+        "result": "30cm 阈值自主避障；手机实时图传；53 页论文通过答辩",
+        "arch": "STM32F407\n├ HC-SR04×3\n├ ESP32-CAM\n├ HC05\n└ OLED"
+      }
+    ]
+  },
+  "contact": {
+    "title": "联系我",
+    "subtitle": "想聊聊 AI 应用开发、嵌入式硬件或合作机会？欢迎通过这些方式联系我",
+    "open": "打开",
+    "copy": "复制",
+    "copied": "已复制 ✓",
+    "items": [
+      {
+        "icon": "📧",
+        "label": "常用邮箱",
+        "value": "2684016264@qq.com",
+        "link": "mailto:2684016264@qq.com"
+      },
+      {
+        "icon": "📱",
+        "label": "电话",
+        "value": "17785687216",
+        "link": "tel:17785687216"
+      },
+      {
+        "icon": "📍",
+        "label": "所在地",
+        "value": "贵阳 · 贵州大学",
+        "link": ""
+      },
+      {
+        "icon": "🎓",
+        "label": "毕业院校",
+        "value": "贵州大学 · 电子信息科学与技术（2026 届）",
+        "link": ""
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} 刘秋靖 · 贵阳 · Built with DeepSeek"
+  },
+  "home": {
+    "contactShort": [
+      {
+        "icon": "📧",
+        "value": "2684016264@qq.com",
+        "link": "mailto:2684016264@qq.com"
+      },
+      {
+        "icon": "📱",
+        "value": "17785687216",
+        "link": "tel:17785687216"
+      },
+      {
+        "icon": "📍",
+        "value": "贵阳",
+        "link": ""
+      },
+      {
+        "icon": "🎓",
+        "value": "贵州大学 · 2026 届",
+        "link": ""
+      }
+    ]
+  }
+},
+  en: {
+  "meta": {
+    "homeTitle": "Liu Qiujing · Personal Site",
+    "aboutTitle": "About · Liu Qiujing",
+    "skillsTitle": "Skills · Liu Qiujing",
+    "projectsTitle": "Projects · Liu Qiujing",
+    "portfolioTitle": "Portfolio · Liu Qiujing",
+    "contactTitle": "Contact · Liu Qiujing",
+    "description": "Liu Qiujing's personal site: AI application & toolchain development, embedded hardware background, DeepSeek API engineering practice"
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "portfolio": "Works",
+    "contact": "Contact",
+    "logo": "Liu Qiujing · Home"
+  },
+  "hero": {
+    "avatarAlt": "Portrait of Liu Qiujing",
+    "greeting": "Hi, I'm",
+    "name": "Liu Qiujing",
+    "tagline": "AI Application Development · Automation Toolchains · Embedded Background",
+    "intro": "A 2026 graduate in Electronic Information Science and Technology from Guizhou University, focused on AI applications and toolchains (DeepSeek API, automation scripting, web apps), with a background in embedded hardware and design contests.",
+    "status": "Class of 2026 · Employed · Based in Guiyang",
+    "ctaProjects": "View My Projects",
+    "ctaContact": "Contact Me",
+    "ctaAbout": "About Me"
+  },
+  "status": {
+    "title": "Current Status",
+    "subtitle": "What I'm up to right now",
+    "items": [
+      {
+        "icon": "🎯",
+        "label": "Current Goal",
+        "text": "Going deeper into AI applications / toolchains and solving real engineering problems with AI"
+      },
+      {
+        "icon": "💼",
+        "label": "Recent Practice",
+        "text": "Personal AI toolchain practice: DeepSeek-driven knowledge base and automation pipelines"
+      },
+      {
+        "icon": "🤖",
+        "label": "Exploring",
+        "text": "DeepSeek API engineering: RAG knowledge bases, automation pipelines, agents"
+      }
+    ]
+  },
+  "featured": {
+    "title": "Featured Projects",
+    "subtitle": "Highlights across AI toolchains and hardware",
+    "viewAll": "View All Projects"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Who I am and what I do",
+    "p1": "Hi! I’m Liu Qiujing (Tujia), from Tongren, Guizhou, a 2026 graduate in Electronic Information Science and Technology at Guizhou University. From PCB soldering and MCU development to AI toolchain practice, I like turning ideas into working things with my own hands.",
+    "p2": "After graduating in June 2026, I signed an open-ended labor contract with a company. In my spare time I keep practicing AI toolchains (a DeepSeek knowledge base, automation pipelines, web apps). During university I won a national 2nd prize in the Higher Education Cup Advanced Drawing Contest and a provincial 1st prize in the Challenge Cup. I keep going deeper into AI applications / toolchains.",
+    "traitsTitle": "Personal Strengths",
+    "traits": [
+      {
+        "icon": "🔧",
+        "label": "Hands-On Builder",
+        "text": "Independently completed circuit design, PCB soldering and full hardware/firmware debugging"
+      },
+      {
+        "icon": "📈",
+        "label": "Fast Learner",
+        "text": "Prepared across disciplines in 3 months and won a national 2nd + provincial 2nd prize"
+      },
+      {
+        "icon": "🤝",
+        "label": "Organizer",
+        "text": "Student Union member, roller skating club secretary, course team leader"
+      },
+      {
+        "icon": "⭐",
+        "label": "Reliable & Careful",
+        "text": "40+ hours of epidemic-prevention volunteering; Volunteer Service Star award"
+      }
+    ],
+    "honorsTitle": "Honors & Awards",
+    "honorsSubtitle": "7 provincial-level and above / university-level awards (click a certificate to view the original image)",
+    "honors": [
+      {
+        "title": "Higher Education Cup Advanced Drawing Contest · Water Resources Track 2nd Prize",
+        "time": "2025.07",
+        "level": "National",
+        "image": "Assets/Images/certs/先进成图大赛.jpg"
+      },
+      {
+        "title": "6th Guizhou College Structural Design Contest · 2nd Prize",
+        "time": "2025.06",
+        "level": "Provincial",
+        "image": "Assets/Images/certs/结构设计竞赛.jpg"
+      },
+      {
+        "title": "Challenge Cup \"Xi Chong Tian Jiang\" · Provincial 1st Prize",
+        "time": "2023",
+        "level": "Provincial",
+        "image": ""
+      },
+      {
+        "title": "Datang Cup ICT Fundamentals · Guizhou 3rd Prize",
+        "time": "2025.06",
+        "level": "Provincial",
+        "image": "Assets/Images/certs/大唐杯.jpg"
+      },
+      {
+        "title": "National College Electronics Design Contest · Guizhou Participation Award",
+        "time": "2025.08",
+        "level": "Provincial",
+        "image": "Assets/Images/certs/电赛.jpg"
+      },
+      {
+        "title": "Lanqiao Cup · Provincial 3rd Prize",
+        "time": "2025",
+        "level": "Provincial",
+        "image": ""
+      },
+      {
+        "title": "Volunteer Service Star, Guizhou University",
+        "time": "2022.12",
+        "level": "University",
+        "image": "Assets/Images/certs/志愿服务之星.jpg"
+      }
+    ],
+    "interestsTitle": "Interests & Hobbies",
+    "interests": [
+      "Badminton",
+      "Table Tennis",
+      "Roller Skating",
+      "Electronics DIY",
+      "Video Editing",
+      "Tech Writing",
+      "Trying AI Tools"
+    ],
+    "timelineTitle": "Experience",
+    "timeline": [
+      {
+        "time": "2026.07 - Present",
+        "title": "Company · Full-Time Employee (Open-Ended Labor Contract)",
+        "desc": "Joined after graduating in June 2026 with an open-ended labor contract"
+      },
+      {
+        "time": "2026.03 - 2026.06",
+        "title": "Graduation Project: STM32 Smart Obstacle-Avoidance Inspection Car",
+        "desc": "Circuit design, PCB soldering, embedded firmware and debugging done independently; defended in June 2026"
+      },
+      {
+        "time": "2025.08",
+        "title": "National College Electronics Design Contest · Guizhou Participation Award",
+        "desc": "Problem E: STM32 car with automatic line tracking and gimbal shooting"
+      },
+      {
+        "time": "2025.07",
+        "title": "Higher Education Cup Advanced Drawing Contest · Water Resources Track 2nd Prize (National)",
+        "desc": "18th national college advanced drawing & product information modeling contest"
+      },
+      {
+        "time": "2025.06",
+        "title": "6th Guizhou College Structural Design Contest · 2nd Prize",
+        "desc": "Also the Guizhou division of the national structural design contest"
+      },
+      {
+        "time": "2025.06",
+        "title": "12th Datang Cup · ICT Fundamentals Guizhou 3rd Prize",
+        "desc": "National college new-generation ICT contest"
+      },
+      {
+        "time": "2025",
+        "title": "Lanqiao Cup · Provincial 3rd Prize",
+        "desc": "Software contest"
+      },
+      {
+        "time": "2023.09 - 2024.06",
+        "title": "Roller Skating Club, Guizhou University · Secretary",
+        "desc": "Organized club activities and member recruitment"
+      },
+      {
+        "time": "Year 2023",
+        "title": "Challenge Cup “Xi Chong Tian Jiang” · Provincial 1st Prize",
+        "desc": "Team member: data collection and platform / mini program feature design"
+      },
+      {
+        "time": "2022.12",
+        "title": "Epidemic-Prevention Volunteering · Volunteer Service Star",
+        "desc": "40+ hours of volunteering in total"
+      },
+      {
+        "time": "2022.09 - 2023.06",
+        "title": "Student Union Publicity Department, Guizhou University · Member",
+        "desc": "Campus event publicity planning and materials; attended the student congress"
+      },
+      {
+        "time": "2022.09 - 2026.06",
+        "title": "Guizhou University · Electronic Information Science and Technology (B.Eng.)",
+        "desc": "Major courses: circuit analysis, analog/digital electronics, signals and systems, communication principles"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Ordered by AI application development needs (self-assessed, based on real project output)",
+    "categories": [
+      {
+        "icon": "💻",
+        "name": "Programming Languages",
+        "items": [
+          {
+            "name": "Python",
+            "level": 85
+          },
+          {
+            "name": "PowerShell Scripting",
+            "level": 85
+          },
+          {
+            "name": "C",
+            "level": 80
+          },
+          {
+            "name": "Verilog HDL",
+            "level": 80
+          },
+          {
+            "name": "C++",
+            "level": 70
+          },
+          {
+            "name": "JavaScript",
+            "level": 55
+          },
+          {
+            "name": "SQL",
+            "level": 55
+          },
+          {
+            "name": "Java",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🤖",
+        "name": "AI Tools & API",
+        "items": [
+          {
+            "name": "DeepSeek",
+            "level": 90
+          },
+          {
+            "name": "API Calling & Orchestration",
+            "level": 85
+          },
+          {
+            "name": "Prompt Engineering",
+            "level": 80
+          },
+          {
+            "name": "ChatGPT",
+            "level": 80
+          },
+          {
+            "name": "Cursor",
+            "level": 75
+          },
+          {
+            "name": "Codex",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🧰",
+        "name": "Dev Tools & Engineering",
+        "items": [
+          {
+            "name": "VS Code",
+            "level": 85
+          },
+          {
+            "name": "PyCharm",
+            "level": 80
+          },
+          {
+            "name": "Git",
+            "level": 75
+          },
+          {
+            "name": "GitHub",
+            "level": 70
+          },
+          {
+            "name": "VMware",
+            "level": 75
+          },
+          {
+            "name": "Linux",
+            "level": 60
+          },
+          {
+            "name": "SQL Server",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "🔧",
+        "name": "Embedded & Hardware",
+        "items": [
+          {
+            "name": "STM32 MCU",
+            "level": 85
+          },
+          {
+            "name": "Keil MDK",
+            "level": 85
+          },
+          {
+            "name": "PCB Soldering",
+            "level": 85
+          },
+          {
+            "name": "Embedded System Design",
+            "level": 80
+          },
+          {
+            "name": "Proteus",
+            "level": 75
+          },
+          {
+            "name": "Multisim",
+            "level": 75
+          },
+          {
+            "name": "FPGA (Quartus II)",
+            "level": 70
+          }
+        ]
+      },
+      {
+        "icon": "🔬",
+        "name": "Simulation & Networking",
+        "items": [
+          {
+            "name": "ModelSim",
+            "level": 70
+          },
+          {
+            "name": "Ultiboard",
+            "level": 65
+          },
+          {
+            "name": "Wireshark",
+            "level": 60
+          },
+          {
+            "name": "COMSOL",
+            "level": 50
+          }
+        ]
+      },
+      {
+        "icon": "🎨",
+        "name": "Design & Modeling",
+        "items": [
+          {
+            "name": "MATLAB",
+            "level": 70
+          },
+          {
+            "name": "AutoCAD",
+            "level": 85
+          },
+          {
+            "name": "Photoshop",
+            "level": 65
+          },
+          {
+            "name": "SketchUp",
+            "level": 60
+          },
+          {
+            "name": "Premiere",
+            "level": 65
+          },
+          {
+            "name": "After Effects",
+            "level": 60
+          },
+          {
+            "name": "Blender",
+            "level": 55
+          }
+        ]
+      },
+      {
+        "icon": "📄",
+        "name": "Office & Collaboration",
+        "items": [
+          {
+            "name": "Word",
+            "level": 90
+          },
+          {
+            "name": "PPT",
+            "level": 90
+          },
+          {
+            "name": "Excel",
+            "level": 80
+          },
+          {
+            "name": "Outlook",
+            "level": 80
+          },
+          {
+            "name": "Gmail",
+            "level": 75
+          },
+          {
+            "name": "WeCom",
+            "level": 80
+          },
+          {
+            "name": "DingTalk",
+            "level": 80
+          }
+        ]
+      }
+    ],
+    "note": {
+      "title": "Scoring Basis & Project Evidence",
+      "text": "Self-assessed scores (0-100) based on real project output in three folders; no third-party certification data. Three factors: ① depth & frequency of use in real projects; ② level of independent work / leadership; ③ complexity and scale of outputs.",
+      "rules": [
+        {
+          "level": "85-90",
+          "desc": "Complete projects built and iterated independently (DeepSeek: 3 shipped projects; PowerShell: 6 pipeline versions + chat client + KB scripts; Python: core language of AI projects; STM32: full graduation-project flow)"
+        },
+        {
+          "level": "70-80",
+          "desc": "Real project experience with independent modules (C, Verilog, Keil, PCB soldering, Git, etc.)"
+        },
+        {
+          "level": "50-65",
+          "desc": "Studied or assisted; can read code and ramp up quickly (Java, SQL, JavaScript, COMSOL, etc.)"
+        }
+      ]
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Click a card to expand architecture and results",
+    "linkLabel": "View Project",
+    "detailLabel": "Expand",
+    "roleLabel": "My Role",
+    "archLabel": "Overall Architecture",
+    "resultLabel": "What Was Achieved",
+    "list": [
+      {
+        "name": "STM32 Smart Inspection Car",
+        "desc": "Graduation project: triple ultrasonic avoidance + camera streaming + Bluetooth dual modes, all hardware & software done independently.",
+        "tech": [
+          "STM32F407",
+          "HC-SR04",
+          "ESP32-CAM"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "Independent developer: circuit design, PCB soldering, firmware & debugging end-to-end",
+        "result": "30cm-threshold avoidance, live phone streaming, Bluetooth control; 53-page thesis defended",
+        "arch": "STM32F407 main MCU\n├ HC-SR04×3 avoidance\n├ ESP32-CAM streaming\n├ HC05 dual modes\n└ OLED display"
+      },
+      {
+        "name": "AI Enterprise Knowledge Base",
+        "desc": "DeepSeek-driven: 1,141 documents organized into a three-tier knowledge base for search and report generation.",
+        "tech": [
+          "DeepSeek API",
+          "PowerShell",
+          "OCR"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "Independent design: three-tier structure + PowerShell pipeline",
+        "result": "Raw/OCR/summary tiers live; playbooks searchable by number",
+        "arch": "1,141 source files\n├ 01 Raw text (0001~0214)\n├ 02 OCR\n└ 00 Index & summaries\nDeepSeek maintained"
+      },
+      {
+        "name": "AI Knowledge Generation Pipeline",
+        "desc": "DeepSeek API batch-generates categorized knowledge bases with resume, logs and quality stats.",
+        "tech": [
+          "PowerShell",
+          "DeepSeek API"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "Independent developer: 6 versions from V1 to V3.3.1",
+        "result": "Batch knowledge generation; resumes without wasting tokens",
+        "arch": "Topics.json\n↓ Build-Prompt\n↓ Invoke-DeepSeek\n↓ Output\nCache / Logs / Config"
+      },
+      {
+        "name": "STM32 Tracking & Shooting Car",
+        "desc": "Electronics contest work: automatic line tracking + gimbal shooting; I handled soldering and the tracking firmware.",
+        "tech": [
+          "STM32",
+          "C"
+        ],
+        "link": "",
+        "featured": true,
+        "role": "Hardware & firmware: soldering + tracking module code (team contest)",
+        "result": "Stable tracking; 1.2mm gimbal accuracy; division participation award",
+        "arch": "STM32 main MCU\n├ Line sensors\n├ Gimbal servo\n└ Soldering & debug"
+      },
+      {
+        "name": "Challenge Cup · Agri Platform",
+        "desc": "“Xi Chong Tian Jiang” project: data collection plus feature design for an online platform and mini program.",
+        "tech": [
+          "Mini Program",
+          "Data Curation"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "Team member: data collection & feature design",
+        "result": "Provincial 1st prize (2023)",
+        "arch": "Data collection\n├ Platform design\n└ Mini program"
+      },
+      {
+        "name": "IoT Device Access Management System",
+        "desc": "Led development as project lead, covering device registration, status monitoring and alerts.",
+        "tech": [
+          "IoT",
+          "C / C++"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "Project lead: schedule & delivery",
+        "result": "Full development cycle led and delivered (2023)",
+        "arch": "Terminal devices\n↓ Access registration\n↓ Management system\n(ledger/monitor/alerts)"
+      },
+      {
+        "name": "Face Recognition System",
+        "desc": "dlib-based: feature extraction, model training and matching, with performance tuning.",
+        "tech": [
+          "Python",
+          "dlib"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "Independent developer: extraction, training, matching",
+        "result": "Feature vectors generated; face matching works",
+        "arch": "Face → landmarks\n↓ Vector library\n↓ New face match\n→ Result"
+      },
+      {
+        "name": "Digital Clock & Flame-Out Protection",
+        "desc": "TTL-chip digital clock plus a thermocouple gas stove flame-out protection device.",
+        "tech": [
+          "TTL Logic",
+          "Multisim"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "Project coordination: division, simulation, verification",
+        "result": "Simulation passed; physical verification done",
+        "arch": "TTL → digital clock\nThermocouple → protection"
+      },
+      {
+        "name": "Vending Machine EDA Simulation",
+        "desc": "Verilog HDL state machine design with ModelSim functional simulation.",
+        "tech": [
+          "Verilog HDL",
+          "ModelSim"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "Independent developer: state machine & simulation",
+        "result": "Coin-dispense-change flow passes simulation",
+        "arch": "Coin/select\n↓ State machine\n↓ Dispense & change\nModelSim"
+      },
+      {
+        "name": "Population Aging Empirical Study",
+        "desc": "Statistical and econometric models on the impact of aging on Guiyang’s GDP.",
+        "tech": [
+          "Econometrics",
+          "MATLAB"
+        ],
+        "link": "",
+        "featured": false,
+        "role": "Modeling: data cleaning & regression",
+        "result": "Empirical finding: weak impact on GDP",
+        "arch": "Statistics bureau data\n↓ Variables\n↓ Baseline regression\n→ Conclusion"
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Works",
+    "subtitle": "What each work does, how it was built, and what it achieved (click to expand)",
+    "list": [
+      {
+        "title": "AI Enterprise Knowledge Base",
+        "type": "AI Project",
+        "desc": "DeepSeek-driven, 1,141 documents in three tiers for search and reports.",
+        "link": "",
+        "image": "",
+        "result": "Three-tier base live; playbooks searchable by number; reports reference it daily",
+        "arch": "Source material\n├ 01 Raw text\n├ 02 OCR\n└ 00 Index & summaries"
+      },
+      {
+        "title": "AI Knowledge Generation Pipeline",
+        "type": "AI Project",
+        "desc": "DeepSeek API batch generation: resume-from-breakpoint + quality stats.",
+        "link": "",
+        "image": "",
+        "result": "Batch categorized knowledge; resumes without wasting tokens; 6 iterations",
+        "arch": "Topics.json\n↓ Prompt\n↓ API call\n↓ Output\nCache/Logs"
+      },
+      {
+        "title": "DeepSeek CLI Client",
+        "type": "AI Project",
+        "desc": "PowerShell chat client: role presets, context memory, separated templates.",
+        "link": "",
+        "image": "",
+        "result": "Multi-turn chats in the terminal; roles and history managed separately",
+        "arch": "DeepSeekChat.ps1\n├ roles.json\n├ history.json\n└ body.json"
+      },
+      {
+        "title": "Personal Site PersonWeb",
+        "type": "Web Project",
+        "desc": "Zero-dependency static SPA: bilingual, particle background, built-in architecture views.",
+        "link": "",
+        "image": "",
+        "result": "Free GitHub Pages hosting; opens on any device; dictionary-driven content",
+        "arch": "index.html\n├ js/ router·i18n·particles\n├ i18n/ dictionaries\n└ assets/ images"
+      },
+      {
+        "title": "STM32 Smart Inspection Car",
+        "type": "Hardware",
+        "desc": "Graduation project: triple ultrasonic avoidance, camera streaming, Bluetooth dual modes.",
+        "link": "",
+        "image": "",
+        "result": "30cm-threshold avoidance; live phone streaming; 53-page thesis defended",
+        "arch": "STM32F407\n├ HC-SR04×3\n├ ESP32-CAM\n├ HC05\n└ OLED"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Interested in AI application development, embedded systems or collaboration? Reach out through any of these channels",
+    "open": "Open",
+    "copy": "Copy",
+    "copied": "Copied ✓",
+    "items": [
+      {
+        "icon": "📧",
+        "label": "Primary Email",
+        "value": "2684016264@qq.com",
+        "link": "mailto:2684016264@qq.com"
+      },
+      {
+        "icon": "📱",
+        "label": "Phone",
+        "value": "17785687216",
+        "link": "tel:17785687216"
+      },
+      {
+        "icon": "📍",
+        "label": "Location",
+        "value": "Guiyang · Guizhou University",
+        "link": ""
+      },
+      {
+        "icon": "🎓",
+        "label": "University",
+        "value": "Guizhou University · Electronic Information Science and Technology (Class of 2026)",
+        "link": ""
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} Liu Qiujing · Guiyang · Built with DeepSeek"
+  },
+  "home": {
+    "contactShort": [
+      {
+        "icon": "📧",
+        "value": "2684016264@qq.com",
+        "link": "mailto:2684016264@qq.com"
+      },
+      {
+        "icon": "📱",
+        "value": "17785687216",
+        "link": "tel:17785687216"
+      },
+      {
+        "icon": "📍",
+        "value": "Guiyang",
+        "link": ""
+      },
+      {
+        "icon": "🎓",
+        "value": "Guizhou University · 2026",
+        "link": ""
+      }
+    ]
+  }
+},
+};
+
+/* ===== I18n.js ===== */
+/**
+ * I18n.js — 中英双语词典（ES Module）
+ * 词典由 Modules/Dicts.js 提供（Launcher/Build.py 从 Languages/*.json 打包），
+ * 随模块图并行加载、零网络等待，首屏渲染更快。
+ * [data-i18n] / [data-i18n-attr] 静态替换；视图渲染由 Router 触发。
+ */
+
+const SUPPORTED = ['zh', 'en'];
+const DEFAULT = 'zh';
+const dicts = DICTS;
+const langListeners = [];
+
+function pickLang() {
+  try {
+    const stored = localStorage.getItem('site-lang');
+    if (SUPPORTED.includes(stored)) return stored;
+  } catch (e) { /* ignore */ }
+  return DEFAULT;
+}
+
+let i18nCurrent = pickLang();
+
+function currentLang() {
+  return i18nCurrent;
+}
+
+/** 按 key.path 取当前语言文案 */
+function t(key) {
+  const d = dicts[i18nCurrent] || {};
+  const val = key.split('.').reduce((o, k) => (o == null ? undefined : o[k]), d);
+  return val === undefined || val === null ? key : val;
+}
+
+/** HTML 转义 */
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+/** 应用文档中所有静态 [data-i18n] / [data-i18n-attr] */
+function applyStatic() {
+  document.documentElement.lang = i18nCurrent === 'zh' ? 'zh-CN' : 'en';
+  const year = String(new Date().getFullYear());
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    let text = t(el.getAttribute('data-i18n'));
+    // {year} 占位符统一替换（视图重渲染后也会被调用，保证不出现字面量）
+    if (typeof text === 'string') text = text.split('{year}').join(year);
+    el.textContent = text;
+  });
+  document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
+    const spec = el.getAttribute('data-i18n-attr').split(':');
+    if (spec.length === 2) el.setAttribute(spec[0], t(spec[1]));
+  });
+}
+
+function onLangChange(fn) {
+  langListeners.push(fn);
+}
+
+async function setLang(lang) {
+  if (!SUPPORTED.includes(lang)) return;
+  i18nCurrent = lang;
+  try { localStorage.setItem('site-lang', lang); } catch (e) { /* ignore */ }
+  applyStatic();
+  updateToggle();
+  langListeners.forEach((fn) => fn());
+}
+
+function updateToggle() {
+  document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
+    btn.textContent = i18nCurrent === 'zh' ? 'EN' : '中文';
+    btn.title = i18nCurrent === 'zh' ? 'Switch to English' : '切换到中文';
+  });
+}
+
+// 全局导出（视图 mount 钩子等处使用）
+window.i18n = {
+  t,
+  esc,
+  setLang,
+  get i18nCurrent() { return i18nCurrent; }
+};
+
+/** 初始化：词典已随模块加载，直接应用并绑定语言按钮 */
+async function initI18n() {
+  applyStatic();
+  updateToggle();
+  document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => setLang(i18nCurrent === 'zh' ? 'en' : 'zh'));
+  });
+}
+
+/* ===== Background.js ===== */
+/**
+ * background.js — 交互式粒子背景（ES Module，性能优化版）
+ * 性能要点：
+ * - 空间哈希网格分桶：连线与斥力只检查相邻桶，O(n·k) 替代 O(n²)
+ * - 颜色预生成分档，避免每帧字符串拼接
+ * - 粒子数按面积自适应且封顶；帧率过低自动降级
+ * - 泊松盘采样初始化 + 粒子间弱斥力，聚集后快速恢复均匀
+ */
+function initBackground() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let w = 0, h = 0, dpr = 1;
+  const pointer = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
+  let particles = [];
+
+  const LINK_DIST = 95;    // 连线最大距离
+  const RADIUS = 170;      // 吸引半径
+  const HALO = 42;         // 光标光环半径
+  const PULL = 0.75;       // 吸引强度
+  const PUSH = 0.3;        // 光环内轻微外推
+  const REPEL = 30;        // 粒子间斥力距离
+  const REPEL_FORCE = 0.02;
+  const MIN_SPACING = 15;  // 泊松盘最小间距
+  const CELL = 90;         // 空间网格边长
+
+  const DOT = 'rgba(130, 190, 255, 0.42)';
+  // 连线颜色按距离预分 5 档，避免每帧拼字符串
+  const LINK_LEVELS = [0.018, 0.036, 0.054, 0.072, 0.085]
+    .map((a) => 'rgba(130, 190, 255, ' + a.toFixed(3) + ')');
+
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 空间哈希桶
+  const cells = new Map();
+  let idCounter = 0;
+
+  function cellKey(x, y) {
+    return Math.floor(x / CELL) + ',' + Math.floor(y / CELL);
+  }
+
+  function buildGrid() {
+    cells.clear();
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      const key = cellKey(p.x, p.y);
+      let arr = cells.get(key);
+      if (!arr) { arr = []; cells.set(key, arr); }
+      arr.push(p);
+    }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function targetCount() {
+    const count = Math.round((w * h) / 11000);
+    return Math.max(50, Math.min(240, count));
+  }
+
+  /** 泊松盘采样初始化 */
+  function spawn(n) {
+    for (let i = 0; i < n; i++) {
+      let x = 0, y = 0, ok = false;
+      for (let attempt = 0; attempt < 22 && !ok; attempt++) {
+        x = Math.random() * w;
+        y = Math.random() * h;
+        ok = true;
+        for (let j = 0; j < particles.length; j++) {
+          const dx = particles[j].x - x;
+          const dy = particles[j].y - y;
+          if (dx * dx + dy * dy < MIN_SPACING * MIN_SPACING) { ok = false; break; }
+        }
+      }
+      particles.push({
+        id: idCounter++,
+        x, y,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: 0.7 + Math.random() * 1.1
+      });
+    }
+  }
+
+  function physics(p) {
+    if (!reduced) {
+      const dx = pointer.x - p.x;
+      const dy = pointer.y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < RADIUS && dist > 0.01) {
+        const nx = dx / dist, ny = dy / dist;
+        const force = dist > HALO
+          ? (1 - dist / RADIUS) * PULL
+          : (dist / HALO - 1) * PUSH;
+        p.vx += nx * force;
+        p.vy += ny * force;
+      }
+    }
+
+    const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+    const max = 6;
+    if (speed > max) { p.vx = (p.vx / speed) * max; p.vy = (p.vy / speed) * max; }
+
+    p.vx *= 0.985;
+    p.vy *= 0.985;
+    p.vx += (Math.random() - 0.5) * 0.05;
+    p.vy += (Math.random() - 0.5) * 0.05;
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < -20) p.x = w + 20; else if (p.x > w + 20) p.x = -20;
+    if (p.y < -20) p.y = h + 20; else if (p.y > h + 20) p.y = -20;
+  }
+
+  function draw(p) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = DOT;
+    ctx.fill();
+  }
+
+  /** 连线 + 斥力：只检查相邻桶，且每对只处理一次（q.id > p.id） */
+  function linksAndRepel(p) {
+    const cx = Math.floor(p.x / CELL);
+    const cy = Math.floor(p.y / CELL);
+    ctx.lineWidth = 0.6;
+    for (let gx = cx - 1; gx <= cx + 1; gx++) {
+      for (let gy = cy - 1; gy <= cy + 1; gy++) {
+        const arr = cells.get(gx + ',' + gy);
+        if (!arr) continue;
+        for (let k = 0; k < arr.length; k++) {
+          const q = arr[k];
+          if (q.id <= p.id) continue; // 去重
+          const dx = p.x - q.x, dy = p.y - q.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK_DIST * LINK_DIST) {
+            const d = Math.sqrt(d2);
+            const lv = Math.min(4, Math.floor(d / (LINK_DIST / 5)));
+            ctx.strokeStyle = LINK_LEVELS[lv];
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+          if (d2 < REPEL * REPEL && d2 > 0.0001) {
+            const d = Math.sqrt(d2);
+            const f = (1 - d / REPEL) * REPEL_FORCE;
+            const fx = (dx / d) * f, fy = (dy / d) * f;
+            p.vx += fx; p.vy += fy;
+            q.vx -= fx; q.vy -= fy;
+          }
+        }
+      }
+    }
+  }
+
+  // 帧率自适应
+  const frameTimes = [];
+
+  function frame() {
+    requestAnimationFrame(frame);
+    const t0 = performance.now();
+
+    pointer.x += (pointer.tx - pointer.x) * 0.14;
+    pointer.y += (pointer.ty - pointer.y) * 0.14;
+
+    ctx.clearRect(0, 0, w, h);
+    buildGrid();
+    for (let i = 0; i < particles.length; i++) {
+      linksAndRepel(particles[i]);
+    }
+    for (let i = 0; i < particles.length; i++) {
+      physics(particles[i]);
+      draw(particles[i]);
+    }
+
+    frameTimes.push(performance.now() - t0);
+    if (frameTimes.length > 90) frameTimes.shift();
+    if (frameTimes.length === 90) {
+      const avg = frameTimes.reduce((a, b) => a + b, 0) / 90;
+      frameTimes.length = 0;
+      if (avg > 20 && particles.length > 60) {
+        particles = particles.slice(0, Math.floor(particles.length * 0.6));
+      } else if (avg < 9 && particles.length < targetCount()) {
+        spawn(Math.min(20, targetCount() - particles.length));
+      }
+    }
+  }
+
+  function adjustCount() {
+    const want = targetCount();
+    while (particles.length > want) particles.pop();
+    while (particles.length < want) spawn(want - particles.length);
+  }
+
+  window.addEventListener('pointermove', (e) => {
+    pointer.tx = e.clientX;
+    pointer.ty = e.clientY;
+  });
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      pointer.tx = e.touches[0].clientX;
+      pointer.ty = e.touches[0].clientY;
+    }
+  }, { passive: true });
+  document.addEventListener('mouseleave', () => {
+    pointer.x = pointer.tx = -9999;
+    pointer.y = pointer.ty = -9999;
+  });
+
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      resize();
+      adjustCount();
+    }, 200);
+  });
+
+  resize();
+  spawn(targetCount());
+
+  if (reduced) {
+    buildGrid();
+    particles.forEach((p) => { linksAndRepel(p); draw(p); });
+  } else {
+    frame();
+  }
+}
+
+/* ===== Router.js ===== */
+/**
+ * router.js — Hash 路由：视图切换 + 过渡动画 + 导航高亮
+ * - URL 形如 #/home、#/about …，默认 #/home
+ * - 切换时重渲染 #view 并播放淡入动画（粒子背景不受影响）
+ */
+
+let routerCurrent = null;
+
+function currentViewName() {
+  return routerCurrent;
+}
+
+/** 解析当前 hash 对应的视图名（非法值回退 home） */
+function parseHash() {
+  const name = location.hash.replace(/^#\/?/, '') || 'home';
+  return views[name] ? name : 'home';
+}
+
+/** 渲染指定视图 */
+function renderView(name) {
+  const view = views[name];
+  if (!view) return;
+  routerCurrent = name;
+
+  const main = document.getElementById('view');
+  main.innerHTML = view.render(t);
+  // 重启动画
+  main.classList.remove('view-enter');
+  void main.offsetWidth;
+  main.classList.add('view-enter');
+
+  applyStatic(); // 视图内静态 [data-i18n]（如页脚年份等全局元素）
+  document.title = t(`meta.${name}Title`);
+
+  // 导航高亮
+  document.querySelectorAll('.nav-links a[data-nav]').forEach((a) => {
+    a.classList.toggle('active', a.getAttribute('data-nav') === name);
+  });
+
+  if (view.mount) view.mount();
+}
+
+/** 初始化路由并渲染当前 hash */
+function initRouter() {
+  window.addEventListener('hashchange', () => renderView(parseHash()));
+
+  // 点击同一视图链接时不触发 hashchange，需手动刷新
+  document.querySelectorAll('.nav-links a[data-nav]').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (a.getAttribute('data-nav') === parseHash()) renderView(parseHash());
+    });
+  });
+
+  renderView(parseHash());
+}
+
+/* ===== Views/Home.js ===== */
+/**
+ * views/home.js — 首页：左个人信息（含联系方式）| 右当前状态；下方精选项目列表
+ * 精选项目：实心圆点编号，点击原地展开详情（不跳转）
+ */
+
+const HomeView = {
+  render(t) {
+    const featured = t('projects.list').filter((p) => p.featured);
+    const detailLabel = t('projects.detailLabel');
+    const roleLabel = t('projects.roleLabel');
+    const resultLabel = t('projects.resultLabel');
+    const archLabel = t('projects.archLabel');
+    const contacts = t('home.contactShort');
+    return `
+      <section class="hero-split">
+        <div class="hero-left">
+          <div class="hero-identity">
+            <img class="hero-avatar" src="Assets/Images/avatar.jpg" alt="${esc(t('hero.avatarAlt'))}">
+            <div>
+              <p class="hero-greeting">${esc(t('hero.greeting'))}</p>
+              <h1 class="hero-name">${esc(t('hero.name'))}</h1>
+              <p class="hero-tagline">${esc(t('hero.tagline'))}</p>
+            </div>
+          </div>
+          <p class="hero-intro">${esc(t('hero.intro'))}</p>
+          <p class="hero-status"><span class="status-dot"></span>${esc(t('hero.status'))}</p>
+          <div class="hero-contact">
+            ${contacts.map((c) => c.link
+              ? `<a class="hero-contact-item" href="${esc(c.link)}">${esc(c.icon)} ${esc(c.value)}</a>`
+              : `<span class="hero-contact-item">${esc(c.icon)} ${esc(c.value)}</span>`).join('')}
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#/projects">${esc(t('hero.ctaProjects'))}</a>
+            <a class="btn btn-ghost" href="#/about">${esc(t('hero.ctaAbout'))}</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="section-head">
+            <h2 class="section-title">${esc(t('status.title'))}</h2>
+            <p class="section-subtitle">${esc(t('status.subtitle'))}</p>
+          </div>
+          <div class="status-stack">
+            ${t('status.items').map((it) => `
+              <div class="card status-card-row">
+                <div class="status-icon">${esc(it.icon)}</div>
+                <div>
+                  <h3>${esc(it.label)}</h3>
+                  <p>${esc(it.text)}</p>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </section>
+
+      <section class="home-featured">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">${esc(t('featured.title'))}</h2>
+            <p class="section-subtitle">${esc(t('featured.subtitle'))}</p>
+          </div>
+          <a class="btn btn-ghost btn-sm" href="#/projects">${esc(t('featured.viewAll'))}</a>
+        </div>
+        <div class="featured-list">
+          ${featured.map((p, i) => `
+            <article class="card featured-item expandable" tabindex="0">
+              <div class="expand-head">
+                <span class="bullet">${i + 1}</span>
+                <h3>${esc(p.name)}</h3>
+                <span class="expand-hint">${esc(detailLabel)} <span class="expand-arrow">▾</span></span>
+              </div>
+              <div class="featured-desc">
+                <p>${esc(p.desc)}</p>
+                <div class="tags">${(p.tech || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+              </div>
+              <div class="expand-body">
+                <div class="expand-inner">
+                  <h4>${esc(roleLabel)}</h4>
+                  <p class="detail-result">${esc(p.role || '')}</p>
+                  <h4>${esc(resultLabel)}</h4>
+                  <p class="detail-result">${esc(p.result || '')}</p>
+                  <h4>${esc(archLabel)}</h4>
+                  <pre class="arch-box">${esc(p.arch || '')}</pre>
+                </div>
+              </div>
+            </article>`).join('')}
+        </div>
+      </section>`;
+  },
+
+  mount() {
+    document.querySelectorAll('#view .featured-item.expandable').forEach((card) => {
+      const arrow = card.querySelector('.expand-arrow');
+      const toggle = () => {
+        const open = card.classList.toggle('open');
+        if (arrow) arrow.textContent = open ? '▴' : '▾';
+        card.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+  }
+};
+
+/* ===== Views/About.js ===== */
+/**
+ * Modules/Views/About.js — 关于我
+ * 上方左右结构：左（个人介绍 → 荣誉与奖项 → 兴趣） | 右（时间轴/我的经历）
+ * 下方：个人特质（横跨整个页面宽度，一行 4 个等高卡片）
+ */
+
+const AboutView = {
+  render(t) {
+    return `
+      <section class="page-head">
+        <h1 class="page-title">${esc(t('about.title'))}</h1>
+        <p class="page-subtitle">${esc(t('about.subtitle'))}</p>
+      </section>
+
+      <div class="about-top">
+        <div class="about-left">
+          <section class="card about-card">
+            <p>${esc(t('about.p1'))}</p>
+            <p>${esc(t('about.p2'))}</p>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <h2 class="section-title">${esc(t('about.honorsTitle'))}</h2>
+              <p class="section-subtitle">${esc(t('about.honorsSubtitle'))}</p>
+            </div>
+            <div class="grid grid-2">
+              ${t('about.honors').map((h) => {
+                const thumb = h.image
+                  ? `<a class="honor-thumb" href="${esc(h.image)}" target="_blank" rel="noopener" title="${esc(h.title)}"><img src="${esc(h.image)}" alt="${esc(h.title)}" loading="lazy"></a>`
+                  : `<div class="honor-thumb"><span class="honor-emoji">🏅</span></div>`;
+                return `
+                  <div class="card honor-card">
+                    ${thumb}
+                    <h3>${esc(h.title)}</h3>
+                    <div class="honor-meta">
+                      <span class="honor-level">${esc(h.level)}</span>
+                      <span>${esc(h.time)}</span>
+                    </div>
+                  </div>`;
+              }).join('')}
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <h2 class="section-title">${esc(t('about.interestsTitle'))}</h2>
+            </div>
+            <div class="chips">
+              ${t('about.interests').map((s) => `<span class="chip">${esc(s)}</span>`).join('')}
+            </div>
+          </section>
+        </div>
+
+        <div class="about-right">
+          <section class="section">
+            <div class="section-head">
+              <h2 class="section-title">${esc(t('about.timelineTitle'))}</h2>
+            </div>
+            <div class="timeline">
+              ${t('about.timeline').map((item) => `
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                    <span class="timeline-time">${esc(item.time)}</span>
+                    <h3>${esc(item.title)}</h3>
+                    <p>${esc(item.desc)}</p>
+                  </div>
+                </div>`).join('')}
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="section about-traits">
+        <div class="section-head">
+          <h2 class="section-title">${esc(t('about.traitsTitle'))}</h2>
+        </div>
+        <div class="grid grid-4 traits-grid">
+          ${t('about.traits').map((tr) => `
+            <div class="card trait-card">
+              <div class="trait-icon">${esc(tr.icon)}</div>
+              <h3>${esc(tr.label)}</h3>
+              <p>${esc(tr.text)}</p>
+            </div>`).join('')}
+        </div>
+      </section>`;
+  },
+  mount() { /* 无动态事件 */ }
+};
+
+/* ===== Views/Skills.js ===== */
+/**
+ * views/skills.js — 技能
+ * 第一屏：顶部类别标签（默认第一个选中）+ 居中雷达图
+ * 第二屏（下翻）：评分依据
+ */
+
+/** 根据一组技能生成雷达图 SVG（轴数随技能数量 4~8 自适应） */
+function radarSVG(items) {
+  const n = items.length;
+  const cx = 210, cy = 205, R = 132;
+  const ang = (i) => -Math.PI / 2 + (2 * Math.PI * i) / n;
+  const pt = (i, r) => [cx + r * Math.cos(ang(i)), cy + r * Math.sin(ang(i))];
+
+  let grid = '', axes = '', labels = '';
+  const data = [];
+
+  [0.25, 0.5, 0.75, 1].forEach((lv) => {
+    const pts = [];
+    for (let i = 0; i < n; i++) pts.push(pt(i, R * lv).map((v) => v.toFixed(1)).join(','));
+    grid += `<polygon points="${pts.join(' ')}" class="radar-grid"/>`;
+  });
+
+  items.forEach((it, i) => {
+    const p = pt(i, R);
+    axes += `<line x1="${cx}" y1="${cy}" x2="${p[0].toFixed(1)}" y2="${p[1].toFixed(1)}" class="radar-axis"/>`;
+    data.push(pt(i, R * ((it.level || 0) / 100)).map((v) => v.toFixed(1)).join(','));
+    const lp = pt(i, R + 32);
+    labels += `<text x="${lp[0].toFixed(1)}" y="${lp[1].toFixed(1)}" class="radar-label">${esc(it.name)} · ${it.level}</text>`;
+  });
+
+  return `<svg viewBox="0 0 420 410" role="img" aria-label="radar chart">`
+    + grid + axes
+    + `<polygon points="${data.join(' ')}" class="radar-area"/>`
+    + `<polygon points="${data.join(' ')}" class="radar-line"/>`
+    + labels
+    + `</svg>`;
+}
+
+const SkillsView = {
+  render(t) {
+    const cats = t('skills.categories');
+    const first = cats[0] || { name: '', items: [] };
+    return `
+      <section class="page-head">
+        <h1 class="page-title">${esc(t('skills.title'))}</h1>
+        <p class="page-subtitle">${esc(t('skills.subtitle'))}</p>
+      </section>
+
+      <section class="skills-hero">
+        <div class="skill-tabs">
+          ${cats.map((cat, i) => `
+            <button type="button" class="skill-tab${i === 0 ? ' active' : ''}" data-cat-index="${i}">
+              ${esc(cat.icon)} ${esc(cat.name)}
+            </button>`).join('')}
+        </div>
+
+        <div class="card radar-panel">
+          <h2 class="radar-title" data-radar-title>${esc(first.name)}</h2>
+          <div class="radar-wrap" data-radar-wrap>${radarSVG(first.items || [])}</div>
+          <div class="radar-legend" data-radar-legend>
+            ${(first.items || []).map((x) => `<span class="chip legend-chip">${esc(x.name)} · ${x.level}</span>`).join('')}
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="card skills-note">
+          <h2 class="skill-cat-title">📊 ${esc(t('skills.note.title'))}</h2>
+          <p class="skills-note-text">${esc(t('skills.note.text'))}</p>
+          <div class="skills-note-rules">
+            ${t('skills.note.rules').map((r) => `
+              <div class="rule-item">
+                <span class="rule-level">${esc(r.level)}</span>
+                <span>${esc(r.desc)}</span>
+              </div>`).join('')}
+          </div>
+        </div>
+      </section>`;
+  },
+
+  mount() {
+    const cats = t('skills.categories');
+    const tabs = document.querySelectorAll('#view .skill-tab');
+    const wrap = document.querySelector('#view [data-radar-wrap]');
+    const title = document.querySelector('#view [data-radar-title]');
+    const legend = document.querySelector('#view [data-radar-legend]');
+    if (!tabs.length || !wrap) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((b) => b.classList.remove('active'));
+        tab.classList.add('active');
+        const cat = cats[Number(tab.dataset.catIndex)];
+        if (!cat) return;
+        if (title) title.textContent = cat.name;
+        wrap.innerHTML = radarSVG(cat.items || []);
+        if (legend) {
+          legend.innerHTML = (cat.items || [])
+            .map((x) => `<span class="chip legend-chip">${esc(x.name)} · ${x.level}</span>`)
+            .join('');
+        }
+      });
+    });
+  }
+};
+
+/* ===== Views/Projects.js ===== */
+/**
+ * views/projects.js — 项目：真分页（每页 5 个）+ 默认展开详情，卡片内容统一
+ */
+
+const PAGE_SIZE = 5;
+let currentPage = 0;
+
+function cardHTML(p, t) {
+  const roleLabel = t('projects.roleLabel');
+  const resultLabel = t('projects.resultLabel');
+  return `
+    <article class="card pcard">
+      <h3 class="pcard-title">${esc(p.name)}</h3>
+      <div class="tags">${(p.tech || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+      <p class="pcard-desc">${esc(p.desc)}</p>
+      <div class="pcard-field">
+        <span class="pcard-label">${esc(roleLabel)}</span>
+        <p>${esc(p.role || '')}</p>
+      </div>
+      <div class="pcard-field">
+        <span class="pcard-label">${esc(resultLabel)}</span>
+        <p>${esc(p.result || '')}</p>
+      </div>
+      <pre class="arch-box">${esc(p.arch || '')}</pre>
+    </article>`;
+}
+
+function pagerHTML(total, t) {
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (pages <= 1) return '';
+  const prev = currentPage > 0 ? '' : ' disabled';
+  const next = currentPage < pages - 1 ? '' : ' disabled';
+  return `
+    <button type="button" class="page-btn" data-page-prev${prev}>‹</button>
+    <span class="page-info">${currentPage + 1} / ${pages}</span>
+    <button type="button" class="page-btn" data-page-next${next}>›</button>`;
+}
+
+const ProjectsView = {
+  render(t) {
+    currentPage = 0;
+    const all = t('projects.list');
+    const page = all.slice(0, PAGE_SIZE);
+    return `
+      <section class="page-head">
+        <h1 class="page-title">${esc(t('projects.title'))}</h1>
+        <p class="page-subtitle">${esc(t('projects.subtitle'))}</p>
+      </section>
+
+      <section class="section">
+        <div class="grid grid-5" data-project-grid>
+          ${page.map((p) => cardHTML(p, t)).join('')}
+        </div>
+        <div class="pagination" data-pagination>${pagerHTML(all.length, t)}</div>
+      </section>`;
+  },
+
+  mount() {
+    const grid = document.querySelector('#view [data-project-grid]');
+    const pager = document.querySelector('#view [data-pagination]');
+    if (!grid || !pager) return;
+
+    const renderPage = () => {
+      const all = t('projects.list');
+      const start = currentPage * PAGE_SIZE;
+      grid.innerHTML = all.slice(start, start + PAGE_SIZE).map((p) => cardHTML(p, t)).join('');
+      pager.innerHTML = pagerHTML(all.length, t);
+    };
+
+    pager.addEventListener('click', (e) => {
+      const all = t('projects.list');
+      const pages = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
+      if (e.target.closest('[data-page-prev]') && currentPage > 0) {
+        currentPage--;
+        renderPage();
+      } else if (e.target.closest('[data-page-next]') && currentPage < pages - 1) {
+        currentPage++;
+        renderPage();
+      }
+    });
+  }
+};
+
+/* ===== Views/Portfolio.js ===== */
+/**
+ * views/portfolio.js — 作品：一行 5 个，默认展开详情，卡片内容统一
+ */
+
+const PortfolioView = {
+  render(t) {
+    const resultLabel = t('projects.resultLabel');
+    return `
+      <section class="page-head">
+        <h1 class="page-title">${esc(t('portfolio.title'))}</h1>
+        <p class="page-subtitle">${esc(t('portfolio.subtitle'))}</p>
+      </section>
+
+      <section class="section">
+        <div class="grid grid-5">
+          ${t('portfolio.list').map((item) => {
+            const cover = item.image
+              ? `<img src="${esc(item.image)}" alt="${esc(item.title)}">`
+              : `<span>${esc(item.type)}</span>`;
+            return `
+              <article class="card pcard">
+                <div class="portfolio-cover" aria-hidden="true">${cover}</div>
+                <h3 class="pcard-title">${esc(item.title)}</h3>
+                <p class="pcard-desc">${esc(item.desc)}</p>
+                <span class="portfolio-type">${esc(item.type)}</span>
+                <div class="pcard-field">
+                  <span class="pcard-label">${esc(resultLabel)}</span>
+                  <p>${esc(item.result || '')}</p>
+                </div>
+                <pre class="arch-box">${esc(item.arch || '')}</pre>
+              </article>`;
+          }).join('')}
+        </div>
+      </section>`;
+  },
+  mount() { /* 无动态事件 */ }
+};
+
+/* ===== Views/Index.js ===== */
+/**
+ * views/index.js — 视图注册表（新增视图在此登记）
+ */
+
+const views = { home: HomeView, about: AboutView, skills: SkillsView, projects: ProjectsView, portfolio: PortfolioView };
+
+/* ===== Main.js ===== */
+/**
+ * main.js — 应用入口：装配粒子、i18n、路由、导航
+ */
+
+/** 移动端汉堡菜单 */
+function initNav() {
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (!toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
+  links.addEventListener('click', (e) => {
+    if (e.target.closest && e.target.closest('a')) {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+    }
+  });
+}
+
+async function boot() {
+  initBackground();          // 粒子常驻，最先启动
+  initNav();
+  await initI18n();          // 加载词典、绑定语言按钮（{year} 在 applyStatic 内统一替换）
+  initRouter();              // 渲染当前视图
+
+  // 切换语言后重渲染当前视图
+  onLangChange(() => {
+    renderView(currentViewName());
+  });
+}
+
+boot();
+
+  </script>
 </body>
 </html>

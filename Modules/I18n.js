@@ -19,15 +19,15 @@ function pickLang() {
   return DEFAULT;
 }
 
-let current = pickLang();
+let i18nCurrent = pickLang();
 
 export function currentLang() {
-  return current;
+  return i18nCurrent;
 }
 
 /** 按 key.path 取当前语言文案 */
 export function t(key) {
-  const d = dicts[current] || {};
+  const d = dicts[i18nCurrent] || {};
   const val = key.split('.').reduce((o, k) => (o == null ? undefined : o[k]), d);
   return val === undefined || val === null ? key : val;
 }
@@ -41,7 +41,7 @@ export function esc(s) {
 
 /** 应用文档中所有静态 [data-i18n] / [data-i18n-attr] */
 export function applyStatic() {
-  document.documentElement.lang = current === 'zh' ? 'zh-CN' : 'en';
+  document.documentElement.lang = i18nCurrent === 'zh' ? 'zh-CN' : 'en';
   const year = String(new Date().getFullYear());
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     let text = t(el.getAttribute('data-i18n'));
@@ -61,7 +61,7 @@ export function onLangChange(fn) {
 
 export async function setLang(lang) {
   if (!SUPPORTED.includes(lang)) return;
-  current = lang;
+  i18nCurrent = lang;
   try { localStorage.setItem('site-lang', lang); } catch (e) { /* ignore */ }
   applyStatic();
   updateToggle();
@@ -70,8 +70,8 @@ export async function setLang(lang) {
 
 function updateToggle() {
   document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
-    btn.textContent = current === 'zh' ? 'EN' : '中文';
-    btn.title = current === 'zh' ? 'Switch to English' : '切换到中文';
+    btn.textContent = i18nCurrent === 'zh' ? 'EN' : '中文';
+    btn.title = i18nCurrent === 'zh' ? 'Switch to English' : '切换到中文';
   });
 }
 
@@ -80,7 +80,7 @@ window.i18n = {
   t,
   esc,
   setLang,
-  get current() { return current; }
+  get i18nCurrent() { return i18nCurrent; }
 };
 
 /** 初始化：词典已随模块加载，直接应用并绑定语言按钮 */
@@ -88,6 +88,6 @@ export async function initI18n() {
   applyStatic();
   updateToggle();
   document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
-    btn.addEventListener('click', () => setLang(current === 'zh' ? 'en' : 'zh'));
+    btn.addEventListener('click', () => setLang(i18nCurrent === 'zh' ? 'en' : 'zh'));
   });
 }
