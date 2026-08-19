@@ -40,8 +40,8 @@
       },
       {
         "icon": "💼",
-        "label": "Recent Work",
-        "text": "Enterprise AI document engineering: a DeepSeek-driven three-tier knowledge base (1,141 documents)"
+        "label": "Recent Practice",
+        "text": "Personal AI toolchain practice: DeepSeek-driven knowledge base and automation pipelines"
       },
       {
         "icon": "🤖",
@@ -59,7 +59,7 @@
     "title": "About Me",
     "subtitle": "Who I am and what I do",
     "p1": "Hi! I’m Liu Qiujing (Tujia), from Tongren, Guizhou, a 2026 graduate in Electronic Information Science and Technology at Guizhou University. From PCB soldering and MCU development to AI toolchain practice, I like turning ideas into working things with my own hands.",
-    "p2": "After graduating in June 2026, I signed an open-ended labor contract with a company and now work on AI document engineering (a DeepSeek-driven three-tier knowledge base). During university I won a national 2nd prize in the Higher Education Cup Advanced Drawing Contest and a provincial 1st prize in the Challenge Cup. I keep going deeper into AI applications / toolchains.",
+    "p2": "After graduating in June 2026, I signed an open-ended labor contract with a company. In my spare time I keep practicing AI toolchains (a DeepSeek knowledge base, automation pipelines, web apps). During university I won a national 2nd prize in the Higher Education Cup Advanced Drawing Contest and a provincial 1st prize in the Challenge Cup. I keep going deeper into AI applications / toolchains.",
     "traitsTitle": "Personal Strengths",
     "traits": [
       {
@@ -144,7 +144,7 @@
       {
         "time": "2026.07 - Present",
         "title": "Company · Full-Time Employee (Open-Ended Labor Contract)",
-        "desc": "AI document engineering: organizing 1,141 project documents into a three-tier knowledge base with DeepSeek for daily document processing and reports"
+        "desc": "Joined after graduating in June 2026 with an open-ended labor contract"
       },
       {
         "time": "2026.03 - 2026.06",
@@ -375,7 +375,7 @@
           },
           {
             "name": "AutoCAD",
-            "level": 65
+            "level": 85
           },
           {
             "name": "Photoshop",
@@ -403,10 +403,6 @@
         "icon": "📄",
         "name": "Office & Collaboration",
         "items": [
-          {
-            "name": "WPS",
-            "level": 90
-          },
           {
             "name": "Word",
             "level": 90

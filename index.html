@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="data:,">
+  <link rel="preload" as="image" href="Assets/Images/avatar.jpg">
   <meta name="description" content="刘秋靖的个人主页：贵州大学电子信息科学与技术 2026 届本科生，嵌入式开发、硬件设计与学科竞赛经历">
   <title>刘秋靖 · 个人主页</title>
   <link rel="stylesheet" href="Styles/Base.css">
@@ -36,8 +37,13 @@
     </div>
   </header>
 
-  <!-- 视图容器：由 router 按 hash 渲染 -->
-  <main class="container main-view" id="view" aria-live="polite"></main>
+  <!-- 视图容器：由 router 按 hash 渲染；初始为加载占位，JS 渲染后替换 -->
+  <main class="container main-view" id="view" aria-live="polite">
+    <div class="boot-hint">
+      <span class="boot-spinner"></span>
+      <p>正在加载…</p>
+    </div>
+  </main>
 
   <footer class="site-footer">
     <div class="container">

@@ -108,6 +108,30 @@
   animation: viewIn 0.3s var(--ease-out) both;
 }
 
+/* 首屏加载占位（词典加载完成前显示） */
+.boot-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 90px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.boot-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--accent);
+  animation: bootSpin 0.8s linear infinite;
+}
+
+@keyframes bootSpin {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes viewIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
