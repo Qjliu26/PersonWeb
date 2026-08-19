@@ -478,56 +478,6 @@ img { max-width: 100%; display: block; }
 
 .project-link:hover { text-decoration: underline; }
 
-/* 展开头部（整块可点击） */
-.expand-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-  text-align: left;
-  font: inherit;
-}
-
-.expand-head h3 { flex: 1; }
-
-.expand-hint {
-  font-size: 12px;
-  color: var(--accent);
-  white-space: nowrap;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.expand-arrow { display: inline-block; }
-
-/* 可展开卡片：整卡可点击 */
-.expandable { cursor: pointer; }
-.expandable .project-link { cursor: pointer; }
-
-/* 展开主体：grid-rows 0fr→1fr 平滑动画 */
-.expand-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.32s var(--ease-out);
-}
-
-.expand-body > .expand-inner { overflow: hidden; }
-
-.expandable.open .expand-body { grid-template-rows: 1fr; }
-
-.expand-inner h4 {
-  font-size: 13.5px;
-  color: var(--text-primary);
-  margin: 8px 0 6px;
-  font-weight: 700;
-}
-
 /* 架构图代码块 */
 .arch-box {
   font-family: Consolas, "Courier New", "Microsoft YaHei", monospace;
@@ -541,11 +491,6 @@ img { max-width: 100%; display: block; }
   white-space: pre-wrap;
   word-break: break-word;
   margin: 0;
-}
-
-.detail-result {
-  font-size: 14px;
-  color: var(--text-primary) !important;
 }
 
 /* ---------- 技能 ---------- */
@@ -700,31 +645,7 @@ img { max-width: 100%; display: block; }
   border: 1px solid rgba(10, 132, 255, 0.25);
 }
 
-/* ---------- 联系卡片 ---------- */
-.contact-card { display: flex; align-items: center; gap: 16px; }
-
-.contact-icon {
-  font-size: 24px;
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid var(--separator);
-  border-radius: 14px;
-}
-
-.contact-info { flex: 1; min-width: 0; }
-
-.contact-info h3 { font-size: 15.5px; }
-
-.contact-value { font-size: 13.5px; word-break: break-all; }
-
-.contact-action { flex-shrink: 0; }
-
-/* ---------- 作品集卡片（含架构展开） ---------- */
+/* ---------- 作品卡片 ---------- */
 .portfolio-card {
   display: flex;
   flex-direction: column;
@@ -744,7 +665,13 @@ img { max-width: 100%; display: block; }
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 3px;
   background: linear-gradient(135deg, #16324a, #1c2a5e);
-  cursor: pointer;
+}
+
+.cover-num {
+  font-size: 30px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 2px;
 }
 
 .portfolio-cover img {
@@ -773,12 +700,6 @@ img { max-width: 100%; display: block; }
   background: var(--accent-soft);
 }
 
-.portfolio-card .expand-head { margin: 12px 18px 0; padding-bottom: 4px; }
-
-.portfolio-card .expand-body { margin: 0 18px 16px; }
-
-.portfolio-card .expand-body > .expand-inner { overflow: hidden; }
-
 /* ---------- 响应式 ---------- */
 @media (max-width: 1200px) {
   .grid-5 { grid-template-columns: repeat(3, 1fr); }
@@ -793,9 +714,6 @@ img { max-width: 100%; display: block; }
 @media (max-width: 640px) {
   .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
   .skill-item { grid-template-columns: 118px 1fr 30px; }
-  .contact-card { flex-wrap: wrap; }
-  .contact-action { width: 100%; }
-  .contact-action .btn { width: 100%; }
 }
 /* ============================================================
    views.css — 各视图专属样式
@@ -807,7 +725,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: 1.15fr 0.85fr;
   gap: 44px;
   align-items: center;
-  padding: 12px 0 12px;
+  padding: 8px 0 8px;
 }
 
 .hero-left { text-align: left; }
@@ -924,9 +842,22 @@ img { max-width: 100%; display: block; }
 
 .featured-list { display: flex; flex-direction: column; gap: 8px; }
 
-.featured-item { padding: 12px 16px; }
+.featured-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
 
-.featured-item .expand-head h3 { font-size: 15.5px; }
+.featured-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.featured-head h3 { font-size: 15.5px; flex: 1; }
 
 .featured-desc {
   display: flex;
@@ -1603,7 +1534,6 @@ const DICTS = {
     "title": "项目",
     "subtitle": "点击卡片展开架构与效果详情",
     "linkLabel": "查看项目",
-    "detailLabel": "展开详情",
     "roleLabel": "我的角色",
     "archLabel": "总体架构",
     "resultLabel": "达到的效果",
@@ -1790,39 +1720,6 @@ const DICTS = {
         "image": "",
         "result": "30cm 阈值自主避障；手机实时图传；53 页论文通过答辩",
         "arch": "STM32F407\n├ HC-SR04×3\n├ ESP32-CAM\n├ HC05\n└ OLED"
-      }
-    ]
-  },
-  "contact": {
-    "title": "联系我",
-    "subtitle": "想聊聊 AI 应用开发、嵌入式硬件或合作机会？欢迎通过这些方式联系我",
-    "open": "打开",
-    "copy": "复制",
-    "copied": "已复制 ✓",
-    "items": [
-      {
-        "icon": "📧",
-        "label": "常用邮箱",
-        "value": "2684016264@qq.com",
-        "link": "mailto:2684016264@qq.com"
-      },
-      {
-        "icon": "📱",
-        "label": "电话",
-        "value": "177****7216",
-        "link": ""
-      },
-      {
-        "icon": "📍",
-        "label": "所在地",
-        "value": "贵阳 · 贵州大学",
-        "link": ""
-      },
-      {
-        "icon": "🎓",
-        "label": "毕业院校",
-        "value": "贵州大学 · 电子信息科学与技术（2026 届）",
-        "link": ""
       }
     ]
   },
@@ -2309,7 +2206,6 @@ const DICTS = {
     "title": "Projects",
     "subtitle": "Click a card to expand architecture and results",
     "linkLabel": "View Project",
-    "detailLabel": "Expand",
     "roleLabel": "My Role",
     "archLabel": "Overall Architecture",
     "resultLabel": "What Was Achieved",
@@ -2496,39 +2392,6 @@ const DICTS = {
         "image": "",
         "result": "30cm-threshold avoidance; live phone streaming; 53-page thesis defended",
         "arch": "STM32F407\n├ HC-SR04×3\n├ ESP32-CAM\n├ HC05\n└ OLED"
-      }
-    ]
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "Interested in AI application development, embedded systems or collaboration? Reach out through any of these channels",
-    "open": "Open",
-    "copy": "Copy",
-    "copied": "Copied ✓",
-    "items": [
-      {
-        "icon": "📧",
-        "label": "Primary Email",
-        "value": "2684016264@qq.com",
-        "link": "mailto:2684016264@qq.com"
-      },
-      {
-        "icon": "📱",
-        "label": "Phone",
-        "value": "177****7216",
-        "link": ""
-      },
-      {
-        "icon": "📍",
-        "label": "Location",
-        "value": "Guiyang · Guizhou University",
-        "link": ""
-      },
-      {
-        "icon": "🎓",
-        "label": "University",
-        "value": "Guizhou University · Electronic Information Science and Technology (Class of 2026)",
-        "link": ""
       }
     ]
   },
@@ -2956,17 +2819,13 @@ function initRouter() {
 
 /* ===== Views/Home.js ===== */
 /**
- * views/home.js — 首页：左个人信息（含联系方式）| 右当前状态；下方精选项目列表
- * 精选项目：实心圆点编号，点击原地展开详情（不跳转）
+ * Modules/Views/Home.js — 首页
+ * 左个人信息（含联系方式）| 右当前状态；下方精选项目列表（点击进入项目页）
  */
 
 const HomeView = {
   render(t) {
     const featured = t('projects.list').filter((p) => p.featured);
-    const detailLabel = t('projects.detailLabel');
-    const roleLabel = t('projects.roleLabel');
-    const resultLabel = t('projects.resultLabel');
-    const archLabel = t('projects.archLabel');
     const contacts = t('home.contactShort');
     return `
       <section class="hero-split">
@@ -3020,45 +2879,20 @@ const HomeView = {
         </div>
         <div class="featured-list">
           ${featured.map((p, i) => `
-            <article class="card featured-item expandable" tabindex="0">
-              <div class="expand-head">
+            <a class="card featured-item" href="#/projects">
+              <div class="featured-head">
                 <span class="bullet">${i + 1}</span>
                 <h3>${esc(p.name)}</h3>
-                <span class="expand-hint">${esc(detailLabel)} <span class="expand-arrow">▾</span></span>
               </div>
               <div class="featured-desc">
                 <p>${esc(p.desc)}</p>
                 <div class="tags">${(p.tech || []).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
               </div>
-              <div class="expand-body">
-                <div class="expand-inner">
-                  <h4>${esc(roleLabel)}</h4>
-                  <p class="detail-result">${esc(p.role || '')}</p>
-                  <h4>${esc(resultLabel)}</h4>
-                  <p class="detail-result">${esc(p.result || '')}</p>
-                  <h4>${esc(archLabel)}</h4>
-                  <pre class="arch-box">${esc(p.arch || '')}</pre>
-                </div>
-              </div>
-            </article>`).join('')}
+            </a>`).join('')}
         </div>
       </section>`;
   },
-
-  mount() {
-    document.querySelectorAll('#view .featured-item.expandable').forEach((card) => {
-      const arrow = card.querySelector('.expand-arrow');
-      const toggle = () => {
-        const open = card.classList.toggle('open');
-        if (arrow) arrow.textContent = open ? '▴' : '▾';
-        card.setAttribute('aria-expanded', open ? 'true' : 'false');
-      };
-      card.addEventListener('click', toggle);
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-      });
-    });
-  }
+  mount() { /* 无动态事件 */ }
 };
 
 /* ===== Views/About.js ===== */
@@ -3360,10 +3194,10 @@ const PortfolioView = {
 
       <section class="section">
         <div class="grid grid-5">
-          ${t('portfolio.list').map((item) => {
+          ${t('portfolio.list').map((item, i) => {
             const cover = item.image
               ? `<img src="${esc(item.image)}" alt="${esc(item.title)}">`
-              : `<span>${esc(item.type)}</span>`;
+              : `<span class="cover-num">${String(i + 1).padStart(2, '0')}</span>`;
             return `
               <article class="card pcard">
                 <div class="portfolio-cover" aria-hidden="true">${cover}</div>

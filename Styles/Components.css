@@ -223,56 +223,6 @@
 
 .project-link:hover { text-decoration: underline; }
 
-/* 展开头部（整块可点击） */
-.expand-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-  text-align: left;
-  font: inherit;
-}
-
-.expand-head h3 { flex: 1; }
-
-.expand-hint {
-  font-size: 12px;
-  color: var(--accent);
-  white-space: nowrap;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.expand-arrow { display: inline-block; }
-
-/* 可展开卡片：整卡可点击 */
-.expandable { cursor: pointer; }
-.expandable .project-link { cursor: pointer; }
-
-/* 展开主体：grid-rows 0fr→1fr 平滑动画 */
-.expand-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.32s var(--ease-out);
-}
-
-.expand-body > .expand-inner { overflow: hidden; }
-
-.expandable.open .expand-body { grid-template-rows: 1fr; }
-
-.expand-inner h4 {
-  font-size: 13.5px;
-  color: var(--text-primary);
-  margin: 8px 0 6px;
-  font-weight: 700;
-}
-
 /* 架构图代码块 */
 .arch-box {
   font-family: Consolas, "Courier New", "Microsoft YaHei", monospace;
@@ -286,11 +236,6 @@
   white-space: pre-wrap;
   word-break: break-word;
   margin: 0;
-}
-
-.detail-result {
-  font-size: 14px;
-  color: var(--text-primary) !important;
 }
 
 /* ---------- 技能 ---------- */
@@ -445,31 +390,7 @@
   border: 1px solid rgba(10, 132, 255, 0.25);
 }
 
-/* ---------- 联系卡片 ---------- */
-.contact-card { display: flex; align-items: center; gap: 16px; }
-
-.contact-icon {
-  font-size: 24px;
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid var(--separator);
-  border-radius: 14px;
-}
-
-.contact-info { flex: 1; min-width: 0; }
-
-.contact-info h3 { font-size: 15.5px; }
-
-.contact-value { font-size: 13.5px; word-break: break-all; }
-
-.contact-action { flex-shrink: 0; }
-
-/* ---------- 作品集卡片（含架构展开） ---------- */
+/* ---------- 作品卡片 ---------- */
 .portfolio-card {
   display: flex;
   flex-direction: column;
@@ -489,7 +410,13 @@
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 3px;
   background: linear-gradient(135deg, #16324a, #1c2a5e);
-  cursor: pointer;
+}
+
+.cover-num {
+  font-size: 30px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 2px;
 }
 
 .portfolio-cover img {
@@ -518,12 +445,6 @@
   background: var(--accent-soft);
 }
 
-.portfolio-card .expand-head { margin: 12px 18px 0; padding-bottom: 4px; }
-
-.portfolio-card .expand-body { margin: 0 18px 16px; }
-
-.portfolio-card .expand-body > .expand-inner { overflow: hidden; }
-
 /* ---------- 响应式 ---------- */
 @media (max-width: 1200px) {
   .grid-5 { grid-template-columns: repeat(3, 1fr); }
@@ -538,7 +459,4 @@
 @media (max-width: 640px) {
   .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
   .skill-item { grid-template-columns: 118px 1fr 30px; }
-  .contact-card { flex-wrap: wrap; }
-  .contact-action { width: 100%; }
-  .contact-action .btn { width: 100%; }
 }

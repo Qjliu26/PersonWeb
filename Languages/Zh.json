@@ -453,7 +453,6 @@
     "title": "项目",
     "subtitle": "点击卡片展开架构与效果详情",
     "linkLabel": "查看项目",
-    "detailLabel": "展开详情",
     "roleLabel": "我的角色",
     "archLabel": "总体架构",
     "resultLabel": "达到的效果",
@@ -640,39 +639,6 @@
         "image": "",
         "result": "30cm 阈值自主避障；手机实时图传；53 页论文通过答辩",
         "arch": "STM32F407\n├ HC-SR04×3\n├ ESP32-CAM\n├ HC05\n└ OLED"
-      }
-    ]
-  },
-  "contact": {
-    "title": "联系我",
-    "subtitle": "想聊聊 AI 应用开发、嵌入式硬件或合作机会？欢迎通过这些方式联系我",
-    "open": "打开",
-    "copy": "复制",
-    "copied": "已复制 ✓",
-    "items": [
-      {
-        "icon": "📧",
-        "label": "常用邮箱",
-        "value": "2684016264@qq.com",
-        "link": "mailto:2684016264@qq.com"
-      },
-      {
-        "icon": "📱",
-        "label": "电话",
-        "value": "177****7216",
-        "link": ""
-      },
-      {
-        "icon": "📍",
-        "label": "所在地",
-        "value": "贵阳 · 贵州大学",
-        "link": ""
-      },
-      {
-        "icon": "🎓",
-        "label": "毕业院校",
-        "value": "贵州大学 · 电子信息科学与技术（2026 届）",
-        "link": ""
       }
     ]
   },

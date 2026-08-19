@@ -8,7 +8,7 @@
   grid-template-columns: 1.15fr 0.85fr;
   gap: 44px;
   align-items: center;
-  padding: 12px 0 12px;
+  padding: 8px 0 8px;
 }
 
 .hero-left { text-align: left; }
@@ -125,9 +125,22 @@
 
 .featured-list { display: flex; flex-direction: column; gap: 8px; }
 
-.featured-item { padding: 12px 16px; }
+.featured-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
 
-.featured-item .expand-head h3 { font-size: 15.5px; }
+.featured-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.featured-head h3 { font-size: 15.5px; flex: 1; }
 
 .featured-desc {
   display: flex;

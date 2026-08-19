@@ -14,10 +14,10 @@ export default {
 
       <section class="section">
         <div class="grid grid-5">
-          ${t('portfolio.list').map((item) => {
+          ${t('portfolio.list').map((item, i) => {
             const cover = item.image
               ? `<img src="${esc(item.image)}" alt="${esc(item.title)}">`
-              : `<span>${esc(item.type)}</span>`;
+              : `<span class="cover-num">${String(i + 1).padStart(2, '0')}</span>`;
             return `
               <article class="card pcard">
                 <div class="portfolio-cover" aria-hidden="true">${cover}</div>
