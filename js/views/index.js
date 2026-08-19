@@ -6,6 +6,5 @@ import about from './about.js';
 import skills from './skills.js';
 import projects from './projects.js';
 import portfolio from './portfolio.js';
-import contact from './contact.js';
 
-export default { home, about, skills, projects, portfolio, contact };
+export default { home, about, skills, projects, portfolio };

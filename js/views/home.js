@@ -1,5 +1,5 @@
 /**
- * views/home.js — 首页：左个人信息 | 右当前状态；下方精选项目单列列表
+ * views/home.js — 首页：左个人信息（含联系方式）| 右当前状态；下方精选项目列表
  * 精选项目：实心圆点编号，点击原地展开详情（不跳转）
  */
 import { esc } from '../i18n.js';
@@ -11,6 +11,7 @@ export default {
     const roleLabel = t('projects.roleLabel');
     const resultLabel = t('projects.resultLabel');
     const archLabel = t('projects.archLabel');
+    const contacts = t('home.contactShort');
     return `
       <section class="hero-split">
         <div class="hero-left">
@@ -24,9 +25,14 @@ export default {
           </div>
           <p class="hero-intro">${esc(t('hero.intro'))}</p>
           <p class="hero-status"><span class="status-dot"></span>${esc(t('hero.status'))}</p>
+          <div class="hero-contact">
+            ${contacts.map((c) => c.link
+              ? `<a class="hero-contact-item" href="${esc(c.link)}">${esc(c.icon)} ${esc(c.value)}</a>`
+              : `<span class="hero-contact-item">${esc(c.icon)} ${esc(c.value)}</span>`).join('')}
+          </div>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#/projects">${esc(t('hero.ctaProjects'))}</a>
-            <a class="btn btn-ghost" href="#/contact">${esc(t('hero.ctaContact'))}</a>
+            <a class="btn btn-ghost" href="#/about">${esc(t('hero.ctaAbout'))}</a>
           </div>
         </div>
 

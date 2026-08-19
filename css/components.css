@@ -63,8 +63,91 @@
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); gap: 12px; }
 
 .center { text-align: center; margin-top: 24px; }
+
+/* ---------- 统一项目/作品卡片（默认展开、高度与行数统一） ---------- */
+.pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  height: 100%;
+}
+
+.pcard-title {
+  font-size: 14.5px;
+  line-height: 1.4;
+  min-height: 2.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcard-desc {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  min-height: 3.2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcard-field { display: flex; flex-direction: column; gap: 2px; }
+
+.pcard-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64b5ff;
+  letter-spacing: 0.5px;
+}
+
+.pcard-field p {
+  font-size: 12.5px;
+  min-height: 3em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcard .arch-box { font-size: 11.5px; padding: 10px 12px; line-height: 1.55; }
+
+.pcard .portfolio-cover { height: 72px; font-size: 14px; letter-spacing: 2px; }
+
+.pcard .portfolio-type { margin: 0; }
+
+.pcard .tags { min-height: 24px; }
+
+/* ---------- 分页 ---------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.page-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--separator);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.page-btn:hover:not([disabled]) { background: rgba(255, 255, 255, 0.12); border-color: var(--border-strong); }
+
+.page-btn[disabled] { opacity: 0.35; cursor: default; }
+
+.page-info { font-size: 13px; color: var(--text-secondary); }
 
 /* ---------- 区块标题 ---------- */
 .section { margin-top: 36px; }
@@ -425,6 +508,10 @@
 .portfolio-card .expand-body > .expand-inner { overflow: hidden; }
 
 /* ---------- 响应式 ---------- */
+@media (max-width: 1200px) {
+  .grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 900px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -432,7 +519,7 @@
 }
 
 @media (max-width: 640px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
   .skill-item { grid-template-columns: 118px 1fr 30px; }
   .contact-card { flex-wrap: wrap; }
   .contact-action { width: 100%; }
