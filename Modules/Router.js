@@ -3,8 +3,8 @@
  * - URL 形如 #/home、#/about …，默认 #/home
  * - 切换时重渲染 #view 并播放淡入动画（粒子背景不受影响）
  */
-import { t, applyStatic } from './i18n.js';
-import views from './views/index.js';
+import { t, applyStatic } from './I18n.js';
+import views from './Views/Index.js';
 
 let current = null;
 

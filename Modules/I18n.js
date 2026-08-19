@@ -40,7 +40,7 @@ export function esc(s) {
 
 async function loadDict(lang) {
   if (!dicts[lang]) {
-    const res = await fetch(`i18n/${lang}.json`);
+    const res = await fetch(`Languages/${lang === 'zh' ? 'Zh' : 'En'}.json`);
     if (!res.ok) throw new Error('词典加载失败: ' + lang);
     dicts[lang] = await res.json();
   }
@@ -100,7 +100,7 @@ export async function initI18n() {
     console.error('[i18n] 词典加载失败：', err);
     const banner = document.createElement('div');
     banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#7a1f1f;color:#fff;padding:10px 16px;font-size:13px;z-index:9999;line-height:1.6';
-    banner.textContent = '多语言词典加载失败：请通过 scripts\\serve.bat 启动本地服务器访问。';
+    banner.textContent = '多语言词典加载失败：请通过 Launcher\\Serve.bat 启动本地服务器访问。';
     document.body.appendChild(banner);
   }
   updateToggle();

@@ -1,7 +1,7 @@
 /**
  * views/projects.js — 项目：真分页（每页 5 个）+ 默认展开详情，卡片内容统一
  */
-import { esc, t } from '../i18n.js';
+import { esc, t } from '../I18n.js';
 
 const PAGE_SIZE = 5;
 let currentPage = 0;

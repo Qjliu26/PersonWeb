@@ -3,7 +3,7 @@
  * 左半部分：个人介绍 → 荣誉与奖项 → 个人特质 → 兴趣与爱好
  * 右半部分：时间轴（我的经历）
  */
-import { esc } from '../i18n.js';
+import { esc } from '../I18n.js';
 
 export default {
   render(t) {

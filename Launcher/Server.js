@@ -1,7 +1,7 @@
 /**
  * server.js — 零依赖静态文件服务器
  * 用途：本机没有 Python 时，serve.bat 会退回用 Node 启动本文件。
- * 也可以手动运行：node server.js
+ * 也可以手动运行：node Server.js
  */
 'use strict';
 

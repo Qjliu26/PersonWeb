@@ -153,7 +153,7 @@
 .section { margin-top: 36px; }
 .section:first-of-type { margin-top: 0; }
 
-.section-head { margin-bottom: 16px; }
+.section-head { margin-bottom: 12px; }
 
 .section-title {
   font-size: 21px;

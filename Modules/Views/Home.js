@@ -2,7 +2,7 @@
  * views/home.js — 首页：左个人信息（含联系方式）| 右当前状态；下方精选项目列表
  * 精选项目：实心圆点编号，点击原地展开详情（不跳转）
  */
-import { esc } from '../i18n.js';
+import { esc } from '../I18n.js';
 
 export default {
   render(t) {
@@ -16,7 +16,7 @@ export default {
       <section class="hero-split">
         <div class="hero-left">
           <div class="hero-identity">
-            <img class="hero-avatar" src="assets/images/avatar.jpg" alt="${esc(t('hero.avatarAlt'))}">
+            <img class="hero-avatar" src="Assets/Images/avatar.jpg" alt="${esc(t('hero.avatarAlt'))}">
             <div>
               <p class="hero-greeting">${esc(t('hero.greeting'))}</p>
               <h1 class="hero-name">${esc(t('hero.name'))}</h1>

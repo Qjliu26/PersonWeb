@@ -90,13 +90,13 @@
         "title": "Higher Education Cup Advanced Drawing Contest · Water Resources Track 2nd Prize",
         "time": "2025.07",
         "level": "National",
-        "image": "assets/images/certs/先进成图大赛.jpg"
+        "image": "Assets/Images/certs/先进成图大赛.jpg"
       },
       {
         "title": "6th Guizhou College Structural Design Contest · 2nd Prize",
         "time": "2025.06",
         "level": "Provincial",
-        "image": "assets/images/certs/结构设计竞赛.jpg"
+        "image": "Assets/Images/certs/结构设计竞赛.jpg"
       },
       {
         "title": "Challenge Cup \"Xi Chong Tian Jiang\" · Provincial 1st Prize",
@@ -108,13 +108,13 @@
         "title": "Datang Cup ICT Fundamentals · Guizhou 3rd Prize",
         "time": "2025.06",
         "level": "Provincial",
-        "image": "assets/images/certs/大唐杯.jpg"
+        "image": "Assets/Images/certs/大唐杯.jpg"
       },
       {
         "title": "National College Electronics Design Contest · Guizhou Participation Award",
         "time": "2025.08",
         "level": "Provincial",
-        "image": "assets/images/certs/电赛.jpg"
+        "image": "Assets/Images/certs/电赛.jpg"
       },
       {
         "title": "Lanqiao Cup · Provincial 3rd Prize",
@@ -126,7 +126,7 @@
         "title": "Volunteer Service Star, Guizhou University",
         "time": "2022.12",
         "level": "University",
-        "image": "assets/images/certs/志愿服务之星.jpg"
+        "image": "Assets/Images/certs/志愿服务之星.jpg"
       }
     ],
     "interestsTitle": "Interests & Hobbies",

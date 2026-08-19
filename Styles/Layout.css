@@ -99,8 +99,8 @@
 /* ---------- 主视图 ---------- */
 .main-view {
   flex: 1;
-  padding-top: 20px;
-  padding-bottom: 64px;
+  padding-top: 12px;
+  padding-bottom: 48px;
 }
 
 /* 视图切换动画 */
@@ -116,7 +116,7 @@
 /* ---------- 页脚 ---------- */
 .site-footer {
   border-top: 1px solid var(--separator);
-  padding: 20px 0 24px;
+  padding: 14px 0 18px;
   text-align: center;
   font-size: 13px;
   color: var(--text-secondary);

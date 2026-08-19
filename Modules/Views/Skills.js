@@ -3,7 +3,7 @@
  * 第一屏：顶部类别标签（默认第一个选中）+ 居中雷达图
  * 第二屏（下翻）：评分依据
  */
-import { esc, t } from '../i18n.js';
+import { esc, t } from '../I18n.js';
 
 /** 根据一组技能生成雷达图 SVG（轴数随技能数量 4~8 自适应） */
 function radarSVG(items) {

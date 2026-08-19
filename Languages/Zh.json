@@ -90,13 +90,13 @@
         "title": "高教杯先进成图大赛 · 水利赛道 二等奖",
         "time": "2025.07",
         "level": "国家级",
-        "image": "assets/images/certs/先进成图大赛.jpg"
+        "image": "Assets/Images/certs/先进成图大赛.jpg"
       },
       {
         "title": "贵州省第六届结构设计竞赛 · 二等奖",
         "time": "2025.06",
         "level": "省级",
-        "image": "assets/images/certs/结构设计竞赛.jpg"
+        "image": "Assets/Images/certs/结构设计竞赛.jpg"
       },
       {
         "title": "挑战杯“喜虫天降”项目 · 省级一等奖",
@@ -108,13 +108,13 @@
         "title": "大唐杯 ICT 基础通识赛 · 贵州赛区三等奖",
         "time": "2025.06",
         "level": "省级",
-        "image": "assets/images/certs/大唐杯.jpg"
+        "image": "Assets/Images/certs/大唐杯.jpg"
       },
       {
         "title": "全国大学生电子设计竞赛 · 贵州赛区成功参赛奖",
         "time": "2025.08",
         "level": "省级",
-        "image": "assets/images/certs/电赛.jpg"
+        "image": "Assets/Images/certs/电赛.jpg"
       },
       {
         "title": "蓝桥杯 · 省级三等奖",
@@ -126,7 +126,7 @@
         "title": "贵州大学志愿服务之星",
         "time": "2022.12",
         "level": "校级",
-        "image": "assets/images/certs/志愿服务之星.jpg"
+        "image": "Assets/Images/certs/志愿服务之星.jpg"
       }
     ],
     "interestsTitle": "兴趣与爱好",

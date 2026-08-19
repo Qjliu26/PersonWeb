@@ -1,7 +1,7 @@
 /**
  * views/portfolio.js — 作品：一行 5 个，默认展开详情，卡片内容统一
  */
-import { esc } from '../i18n.js';
+import { esc } from '../I18n.js';
 
 export default {
   render(t) {

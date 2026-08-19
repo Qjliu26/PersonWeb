@@ -1,9 +1,9 @@
 /**
  * main.js — 应用入口：装配粒子、i18n、路由、导航
  */
-import { initI18n, onLangChange } from './i18n.js';
-import { initBackground } from './background.js';
-import { initRouter, renderView, currentViewName } from './router.js';
+import { initI18n, onLangChange } from './I18n.js';
+import { initBackground } from './Background.js';
+import { initRouter, renderView, currentViewName } from './Router.js';
 
 /** 移动端汉堡菜单 */
 function initNav() {
