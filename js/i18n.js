@@ -49,8 +49,12 @@ async function loadDict(lang) {
 /** 应用文档中所有静态 [data-i18n] / [data-i18n-attr] */
 export function applyStatic() {
   document.documentElement.lang = current === 'zh' ? 'zh-CN' : 'en';
+  const year = String(new Date().getFullYear());
   document.querySelectorAll('[data-i18n]').forEach((el) => {
-    el.textContent = t(el.getAttribute('data-i18n'));
+    let text = t(el.getAttribute('data-i18n'));
+    // {year} 占位符统一替换（视图重渲染后也会被调用，保证不出现字面量）
+    if (typeof text === 'string') text = text.split('{year}').join(year);
+    el.textContent = text;
   });
   document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
     const spec = el.getAttribute('data-i18n-attr').split(':');

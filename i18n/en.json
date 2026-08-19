@@ -14,8 +14,9 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
-    "portfolio": "Portfolio",
-    "contact": "Contact"
+    "portfolio": "Works",
+    "contact": "Contact",
+    "logo": "Liu Qiujing · Home"
   },
   "hero": {
     "avatarAlt": "Portrait of Liu Qiujing",
@@ -554,8 +555,8 @@
     ]
   },
   "portfolio": {
-    "title": "Portfolio",
-    "subtitle": "My works and project architectures (click a card to expand)",
+    "title": "Works",
+    "subtitle": "What each work does, how it was built, and what it achieved (click to expand)",
     "list": [
       {
         "title": "Enterprise Document Knowledge Base (DeepSeek-Driven)",
@@ -563,7 +564,8 @@
         "desc": "DeepSeek-driven three-tier knowledge base: 1,141 documents → raw text / OCR / indexed summaries, supporting document processing and report generation.",
         "link": "",
         "image": "",
-        "arch": "Source material (1,141 files)\n  ↓ ingestion pipeline\n├─ 01-Raw Text/ ── de-formatted text (0001~0214)\n├─ 02-OCR/ ────── image text & table parsing\n└─ 00-Index & Summaries/ ── mapping + summaries\nMaintained by a DeepSeek session + expansion spec"
+        "arch": "Source material (1,141 files)\n  ↓ ingestion pipeline\n├─ 01-Raw Text/ ── de-formatted text (0001~0214)\n├─ 02-OCR/ ────── image text & table parsing\n└─ 00-Index & Summaries/ ── mapping + summaries\nMaintained by a DeepSeek session + expansion spec",
+        "result": "Turned 1,141 messy documents into a searchable three-tier knowledge base; powers daily document processing and report generation; key playbooks retrievable by number."
       },
       {
         "title": "PythonKnowledgeGenerator",
@@ -571,7 +573,8 @@
         "desc": "DeepSeek API knowledge generation pipeline (PowerShell): layered architecture + resume-from-breakpoint + quality stats.",
         "link": "",
         "image": "",
-        "arch": "PythonKnowledgeGenerator/\n├── Config/   ← Topics.json task library, Settings\n├── Cache/    ← generation state (resume)\n├── Logs/     ← run logs\n├── Output/   ← categorized knowledge base\n└── *.ps1     ← pipeline main (6 versions)\nFunctions: Write-Log / Invoke-DeepSeek / Build-Prompt\n           Load-Cache / Save-Cache / Get-ContentInfo"
+        "arch": "PythonKnowledgeGenerator/\n├── Config/   ← Topics.json task library, Settings\n├── Cache/    ← generation state (resume)\n├── Logs/     ← run logs\n├── Output/   ← categorized knowledge base\n└── *.ps1     ← pipeline main (6 versions)\nFunctions: Write-Log / Invoke-DeepSeek / Build-Prompt\n           Load-Cache / Save-Cache / Get-ContentInfo",
+        "result": "Batch-generates a categorized Python knowledge base by topic; resumes from breakpoints without wasting tokens; iterated across 6 versions."
       },
       {
         "title": "DeepSeek Chat Client (PowerShell)",
@@ -579,7 +582,8 @@
         "desc": "Command-line multi-turn chat client with role presets, conversation context and request templates separated.",
         "link": "",
         "image": "",
-        "arch": "DeepSeekChat.ps1\n├─ roles.json ───────── role presets\n├─ chat_history.json ── conversation context\n├─ body.json ────────── API request template\n└─ response.json ────── response cache"
+        "arch": "DeepSeekChat.ps1\n├─ roles.json ───────── role presets\n├─ chat_history.json ── conversation context\n├─ body.json ────────── API request template\n└─ response.json ────── response cache",
+        "result": "Multi-turn DeepSeek conversations right in the command line, with role presets and context memory - no browser needed."
       },
       {
         "title": "HarnessWeb Personal Site (this website)",
@@ -587,7 +591,8 @@
         "desc": "Native ES Module single-page app: hash routing, bilingual i18n, interactive particle background, zero dependencies.",
         "link": "",
         "image": "",
-        "arch": "src/\n├─ index.html ───── SPA entry\n├─ js/\n│  ├─ main.js ───── bootstrap\n│  ├─ router.js ─── hash routing + view transitions\n│  ├─ i18n.js ───── bilingual dictionaries\n│  ├─ background.js ── particle background\n│  └─ views/ ────── one module per view\n├─ i18n/ ── zh.json / en.json (content & code separated)\n└─ assets/ ── avatar & certificate images"
+        "arch": "src/\n├─ index.html ───── SPA entry\n├─ js/\n│  ├─ main.js ───── bootstrap\n│  ├─ router.js ─── hash routing + view transitions\n│  ├─ i18n.js ───── bilingual dictionaries\n│  ├─ background.js ── particle background\n│  └─ views/ ────── one module per view\n├─ i18n/ ── zh.json / en.json (content & code separated)\n└─ assets/ ── avatar & certificate images",
+        "result": "A zero-dependency static single-page app: bilingual i18n, interactive particle background, expandable project architectures, hosted free on GitHub Pages."
       },
       {
         "title": "Smart Obstacle-Avoidance Inspection Car (Graduation Project)",
@@ -595,7 +600,8 @@
         "desc": "STM32F407 + three ultrasonic sensors + ESP32-CAM streaming + Bluetooth dual modes, built end-to-end.",
         "link": "",
         "image": "",
-        "arch": "STM32F407VET6 main controller\n├─ HC-SR04 ×3 ── multi-direction ultrasonic ranging\n├─ L298N ────── PWM motor drive\n├─ ESP32-CAM ── WiFi video streaming → phone\n├─ HC05 ─────── Bluetooth remote / mode interlock\n└─ OLED ─────── status display\nPower: 12V → 5V → 3.3V two-stage buck"
+        "arch": "STM32F407VET6 main controller\n├─ HC-SR04 ×3 ── multi-direction ultrasonic ranging\n├─ L298N ────── PWM motor drive\n├─ ESP32-CAM ── WiFi video streaming → phone\n├─ HC05 ─────── Bluetooth remote / mode interlock\n└─ OLED ─────── status display\nPower: 12V → 5V → 3.3V two-stage buck",
+        "result": "30cm-threshold autonomous obstacle avoidance, real-time phone video streaming and Bluetooth dual modes; 53-page thesis, defense passed."
       }
     ]
   },

@@ -14,8 +14,9 @@
     "about": "关于",
     "skills": "技能",
     "projects": "项目",
-    "portfolio": "作品集",
-    "contact": "联系"
+    "portfolio": "作品",
+    "contact": "联系",
+    "logo": "刘秋靖 · 个人主页"
   },
   "hero": {
     "avatarAlt": "刘秋靖的头像",
@@ -555,8 +556,8 @@
     ]
   },
   "portfolio": {
-    "title": "作品集",
-    "subtitle": "我的作品与项目架构（点击卡片展开架构详情）",
+    "title": "作品",
+    "subtitle": "每个作品在做什么、怎么做的、达到了什么效果（点击展开）",
     "list": [
       {
         "title": "企业文档知识库（DeepSeek 驱动）",
@@ -564,7 +565,8 @@
         "desc": "DeepSeek 驱动的三级知识库：1141 份文档 → 原文提取 / OCR / 索引摘要，支持文档处理与报告生成。",
         "link": "",
         "image": "",
-        "arch": "原始资料（1141 份文件）\n  ↓ 读取流水线\n├─ 01-原文提取/ —— 去格式纯文本（编号 0001~0214）\n├─ 02-OCR识别结果/ —— 图片文字与表格解析\n└─ 00-索引与摘要/ —— 索引映射 + 主题摘要\nDeepSeek 会话维护 + 后续扩充规范"
+        "arch": "原始资料（1141 份文件）\n  ↓ 读取流水线\n├─ 01-原文提取/ —— 去格式纯文本（编号 0001~0214）\n├─ 02-OCR识别结果/ —— 图片文字与表格解析\n└─ 00-索引与摘要/ —— 索引映射 + 主题摘要\nDeepSeek 会话维护 + 后续扩充规范",
+        "result": "把 1141 份杂乱文档变成可检索的三级知识库，日常文档处理与报告生成直接引用，关键手册按编号即查即用。"
       },
       {
         "title": "PythonKnowledgeGenerator",
@@ -572,7 +574,8 @@
         "desc": "DeepSeek API 知识生成流水线（PowerShell）：分层架构 + 断点续跑 + 质量统计。",
         "link": "",
         "image": "",
-        "arch": "PythonKnowledgeGenerator/\n├── Config/   ← Topics.json 任务库、Settings\n├── Cache/    ← 生成状态（断点续跑）\n├── Logs/     ← 运行日志\n├── Output/   ← 分类知识库（最终产品）\n└── *.ps1     ← 流水线主程序（6 个版本迭代）\n函数：Write-Log / Invoke-DeepSeek / Build-Prompt\n      Load-Cache / Save-Cache / Get-ContentInfo"
+        "arch": "PythonKnowledgeGenerator/\n├── Config/   ← Topics.json 任务库、Settings\n├── Cache/    ← 生成状态（断点续跑）\n├── Logs/     ← 运行日志\n├── Output/   ← 分类知识库（最终产品）\n└── *.ps1     ← 流水线主程序（6 个版本迭代）\n函数：Write-Log / Invoke-DeepSeek / Build-Prompt\n      Load-Cache / Save-Cache / Get-ContentInfo",
+        "result": "按主题批量自动生成 Python 知识库；断电可续跑、不重复消耗 Token；6 个版本持续迭代。"
       },
       {
         "title": "DeepSeek Chat 客户端（PowerShell）",
@@ -580,7 +583,8 @@
         "desc": "命令行多轮对话客户端：角色预设、历史上下文与请求模板分离。",
         "link": "",
         "image": "",
-        "arch": "DeepSeekChat.ps1\n├─ roles.json ────── 角色预设\n├─ chat_history.json ── 对话上下文\n├─ body.json ────── API 请求模板\n└─ response.json ─── 响应缓存"
+        "arch": "DeepSeekChat.ps1\n├─ roles.json ────── 角色预设\n├─ chat_history.json ── 对话上下文\n├─ body.json ────── API 请求模板\n└─ response.json ─── 响应缓存",
+        "result": "在命令行里与 DeepSeek 多轮对话，支持角色预设与上下文记忆，无需打开网页。"
       },
       {
         "title": "HarnessWeb 个人主页（本网站）",
@@ -588,7 +592,8 @@
         "desc": "原生 ES Module 单页应用：hash 路由、中英双语、交互粒子背景，零依赖零构建。",
         "link": "",
         "image": "",
-        "arch": "src/\n├─ index.html ───── SPA 唯一入口\n├─ js/\n│  ├─ main.js ───── 装配入口\n│  ├─ router.js ─── hash 路由 + 视图切换\n│  ├─ i18n.js ───── 双语词典\n│  ├─ background.js ── 粒子背景\n│  └─ views/ ────── 每视图一个模块\n├─ i18n/ ── zh.json / en.json（内容与代码分离）\n└─ assets/ ── 头像与证书图片"
+        "arch": "src/\n├─ index.html ───── SPA 唯一入口\n├─ js/\n│  ├─ main.js ───── 装配入口\n│  ├─ router.js ─── hash 路由 + 视图切换\n│  ├─ i18n.js ───── 双语词典\n│  ├─ background.js ── 粒子背景\n│  └─ views/ ────── 每视图一个模块\n├─ i18n/ ── zh.json / en.json（内容与代码分离）\n└─ assets/ ── 头像与证书图片",
+        "result": "零依赖纯静态单页应用：中英双语、粒子交互背景、点击展开的项目架构，托管于 GitHub Pages 免费访问。"
       },
       {
         "title": "智能避障巡检小车（毕业设计）",
@@ -596,7 +601,8 @@
         "desc": "STM32F407 + 三路超声波避障 + ESP32-CAM 图传 + 蓝牙双模式，全流程独立完成。",
         "link": "",
         "image": "",
-        "arch": "STM32F407VET6 主控\n├─ HC-SR04 ×3 ── 多方向超声波测距\n├─ L298N ────── PWM 电机驱动\n├─ ESP32-CAM ── WiFi 视频推流 → 手机端\n├─ HC05 ─────── 蓝牙遥控 / 模式互锁\n└─ OLED ─────── 状态显示\n电源：12V → 5V → 3.3V 二级降压"
+        "arch": "STM32F407VET6 主控\n├─ HC-SR04 ×3 ── 多方向超声波测距\n├─ L298N ────── PWM 电机驱动\n├─ ESP32-CAM ── WiFi 视频推流 → 手机端\n├─ HC05 ─────── 蓝牙遥控 / 模式互锁\n└─ OLED ─────── 状态显示\n电源：12V → 5V → 3.3V 二级降压",
+        "result": "实现 30cm 阈值自主避障、手机端实时图传与蓝牙遥控双模式，论文 53 页并通过答辩。"
       }
     ]
   },

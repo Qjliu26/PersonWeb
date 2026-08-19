@@ -19,10 +19,10 @@ export function initBackground() {
   let particles = [];
 
   const LINK_DIST = 100;   // 连线最大距离
-  const RADIUS = 220;      // 吸引半径
-  const HALO = 26;         // 光标光环半径
-  const PULL = 0.7;        // 吸引强度
-  const PUSH = 0.35;       // 光环内轻微外推
+  const RADIUS = 170;      // 吸引半径（缩小：只影响光标附近）
+  const HALO = 42;         // 光标光环半径（放大：聚焦团更明显）
+  const PULL = 0.75;       // 吸引强度
+  const PUSH = 0.3;        // 光环内轻微外推
   const REPEL = 30;        // 粒子间斥力距离（保持均匀、聚集后可恢复）
   const REPEL_FORCE = 0.02;
   const MIN_SPACING = 15;  // 初始化最小间距（泊松盘采样）

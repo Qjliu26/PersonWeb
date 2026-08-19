@@ -1,10 +1,12 @@
 /**
- * views/portfolio.js — 作品集：点击整张卡片展开架构图
+ * views/portfolio.js — 作品：点击整张卡片展开「效果 + 架构图」
  */
 import { esc } from '../i18n.js';
 
 export default {
   render(t) {
+    const resultLabel = t('projects.resultLabel');
+    const archLabel = t('projects.archLabel');
     return `
       <section class="page-head">
         <h1 class="page-title">${esc(t('portfolio.title'))}</h1>
@@ -28,6 +30,9 @@ export default {
                 <span class="portfolio-type">${esc(item.type)}</span>
                 <div class="expand-body">
                   <div class="expand-inner">
+                    <h4>${esc(resultLabel)}</h4>
+                    <p class="detail-result">${esc(item.result || '')}</p>
+                    <h4>${esc(archLabel)}</h4>
                     <pre class="arch-box">${esc(item.arch || '')}</pre>
                   </div>
                 </div>

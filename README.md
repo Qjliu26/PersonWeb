@@ -1,6 +1,6 @@
 # 刘秋靖 · 个人主页（PersonWeb）
 
-> 在线访问：**https://Qjliu26.github.io/PersonWeb/**（GitHub Pages，打开即用）
+> 在线访问：[**点击这里直接打开个人主页**](https://Qjliu26.github.io/PersonWeb/)（GitHub Pages，打开即用）
 
 一个纯静态的个人主页：原生 ES Module 单页应用（hash 路由），零依赖、零构建。
 深色 Apple 风格 + 交互式粒子背景 + 中英双语切换（右上角 `EN/中文`）。
@@ -8,7 +8,7 @@
 ## 怎么操作
 
 ### ① 在线看（最快）
-直接打开 <https://Qjliu26.github.io/PersonWeb/>，任何设备都能访问。
+直接打开 [Qjliu26.github.io/PersonWeb](https://Qjliu26.github.io/PersonWeb/)，任何设备都能访问。
 
 ### ② 本地运行
 ```bat

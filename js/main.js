@@ -1,7 +1,7 @@
 /**
  * main.js — 应用入口：装配粒子、i18n、路由、导航
  */
-import { initI18n, onLangChange, applyStatic } from './i18n.js';
+import { initI18n, onLangChange } from './i18n.js';
 import { initBackground } from './background.js';
 import { initRouter, renderView, currentViewName } from './router.js';
 
@@ -22,25 +22,14 @@ function initNav() {
   });
 }
 
-/** 页脚 {year} 占位符替换 */
-function fillYear() {
-  const year = String(new Date().getFullYear());
-  document.querySelectorAll('[data-i18n]').forEach((el) => {
-    const text = el.textContent;
-    if (text.includes('{year}')) el.textContent = text.split('{year}').join(year);
-  });
-}
-
 async function boot() {
   initBackground();          // 粒子常驻，最先启动
   initNav();
-  await initI18n();          // 加载词典、绑定语言按钮
-  fillYear();
+  await initI18n();          // 加载词典、绑定语言按钮（{year} 在 applyStatic 内统一替换）
   initRouter();              // 渲染当前视图
 
   // 切换语言后重渲染当前视图
   onLangChange(() => {
-    fillYear();
     renderView(currentViewName());
   });
 }
