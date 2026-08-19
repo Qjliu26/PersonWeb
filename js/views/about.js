@@ -47,7 +47,7 @@ export default {
             <div class="section-head">
               <h2 class="section-title">${esc(t('about.traitsTitle'))}</h2>
             </div>
-            <div class="grid grid-2">
+            <div class="grid grid-4">
               ${t('about.traits').map((tr) => `
                 <div class="card trait-card">
                   <div class="trait-icon">${esc(tr.icon)}</div>

@@ -1,7 +1,7 @@
 /**
  * views/projects.js — 项目：真分页（每页 5 个）+ 默认展开详情，卡片内容统一
  */
-import { esc } from '../i18n.js';
+import { esc, t } from '../i18n.js';
 
 const PAGE_SIZE = 5;
 let currentPage = 0;
@@ -60,8 +60,6 @@ export default {
     const grid = document.querySelector('#view [data-project-grid]');
     const pager = document.querySelector('#view [data-pagination]');
     if (!grid || !pager) return;
-    const i18n = window.i18n;
-    const t = i18n.t;
 
     const renderPage = () => {
       const all = t('projects.list');

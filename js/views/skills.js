@@ -3,7 +3,7 @@
  * 第一屏：顶部类别标签（默认第一个选中）+ 居中雷达图
  * 第二屏（下翻）：评分依据
  */
-import { esc } from '../i18n.js';
+import { esc, t } from '../i18n.js';
 
 /** 根据一组技能生成雷达图 SVG（轴数随技能数量 4~8 自适应） */
 function radarSVG(items) {
@@ -80,8 +80,7 @@ export default {
   },
 
   mount() {
-    const i18n = window.i18n;
-    const cats = i18n.t('skills.categories');
+    const cats = t('skills.categories');
     const tabs = document.querySelectorAll('#view .skill-tab');
     const wrap = document.querySelector('#view [data-radar-wrap]');
     const title = document.querySelector('#view [data-radar-title]');
@@ -98,7 +97,7 @@ export default {
         wrap.innerHTML = radarSVG(cat.items || []);
         if (legend) {
           legend.innerHTML = (cat.items || [])
-            .map((x) => `<span class="chip legend-chip">${i18n.esc(x.name)} · ${x.level}</span>`)
+            .map((x) => `<span class="chip legend-chip">${esc(x.name)} · ${x.level}</span>`)
             .join('');
         }
       });

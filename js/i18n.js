@@ -83,6 +83,14 @@ function updateToggle() {
   });
 }
 
+// 全局导出（视图 mount 钩子等处使用）
+window.i18n = {
+  t,
+  esc,
+  setLang,
+  get current() { return current; }
+};
+
 /** 初始化：加载默认词典并绑定语言按钮 */
 export async function initI18n() {
   try {
