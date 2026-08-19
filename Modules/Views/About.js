@@ -1,7 +1,7 @@
 /**
  * Modules/Views/About.js — 关于我
- * 顶部：个人特质（横跨整个页面宽度，一行 4 个）
- * 下方左右结构：左（个人介绍 → 荣誉与奖项 → 兴趣） | 右（时间轴/我的经历）
+ * 上方左右结构：左（个人介绍 → 荣誉与奖项 → 兴趣） | 右（时间轴/我的经历）
+ * 下方：个人特质（横跨整个页面宽度，一行 4 个等高卡片）
  */
 import { esc } from '../I18n.js';
 
@@ -11,20 +11,6 @@ export default {
       <section class="page-head">
         <h1 class="page-title">${esc(t('about.title'))}</h1>
         <p class="page-subtitle">${esc(t('about.subtitle'))}</p>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2 class="section-title">${esc(t('about.traitsTitle'))}</h2>
-        </div>
-        <div class="grid grid-4">
-          ${t('about.traits').map((tr) => `
-            <div class="card trait-card">
-              <div class="trait-icon">${esc(tr.icon)}</div>
-              <h3>${esc(tr.label)}</h3>
-              <p>${esc(tr.text)}</p>
-            </div>`).join('')}
-        </div>
       </section>
 
       <div class="about-top">
@@ -85,7 +71,21 @@ export default {
             </div>
           </section>
         </div>
-      </div>`;
+      </div>
+
+      <section class="section about-traits">
+        <div class="section-head">
+          <h2 class="section-title">${esc(t('about.traitsTitle'))}</h2>
+        </div>
+        <div class="grid grid-4 traits-grid">
+          ${t('about.traits').map((tr) => `
+            <div class="card trait-card">
+              <div class="trait-icon">${esc(tr.icon)}</div>
+              <h3>${esc(tr.label)}</h3>
+              <p>${esc(tr.text)}</p>
+            </div>`).join('')}
+        </div>
+      </section>`;
   },
   mount() { /* 无动态事件 */ }
 };

@@ -1,13 +1,14 @@
 /**
- * i18n.js — 中英双语词典（ES Module）
- * - 词典从 src/i18n/{lang}.json 加载
- * - [data-i18n="key.path"] / [data-i18n-attr="attr:key"] 静态替换
- * - 视图切换/语言切换时由 main.js 统一触发重渲染
+ * I18n.js — 中英双语词典（ES Module）
+ * 词典由 Modules/Dicts.js 提供（Launcher/Build.py 从 Languages/*.json 打包），
+ * 随模块图并行加载、零网络等待，首屏渲染更快。
+ * [data-i18n] / [data-i18n-attr] 静态替换；视图渲染由 Router 触发。
  */
+import { DICTS } from './Dicts.js';
 
 const SUPPORTED = ['zh', 'en'];
 const DEFAULT = 'zh';
-const dicts = {};
+const dicts = DICTS;
 const langListeners = [];
 
 function pickLang() {
@@ -38,14 +39,6 @@ export function esc(s) {
   }[c]));
 }
 
-async function loadDict(lang) {
-  if (!dicts[lang]) {
-    const res = await fetch(`Languages/${lang === 'zh' ? 'Zh' : 'En'}.json`);
-    if (!res.ok) throw new Error('词典加载失败: ' + lang);
-    dicts[lang] = await res.json();
-  }
-}
-
 /** 应用文档中所有静态 [data-i18n] / [data-i18n-attr] */
 export function applyStatic() {
   document.documentElement.lang = current === 'zh' ? 'zh-CN' : 'en';
@@ -70,7 +63,6 @@ export async function setLang(lang) {
   if (!SUPPORTED.includes(lang)) return;
   current = lang;
   try { localStorage.setItem('site-lang', lang); } catch (e) { /* ignore */ }
-  await loadDict(lang);
   applyStatic();
   updateToggle();
   langListeners.forEach((fn) => fn());
@@ -91,18 +83,9 @@ window.i18n = {
   get current() { return current; }
 };
 
-/** 初始化：加载默认词典并绑定语言按钮 */
+/** 初始化：词典已随模块加载，直接应用并绑定语言按钮 */
 export async function initI18n() {
-  try {
-    await loadDict(current);
-    applyStatic();
-  } catch (err) {
-    console.error('[i18n] 词典加载失败：', err);
-    const banner = document.createElement('div');
-    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#7a1f1f;color:#fff;padding:10px 16px;font-size:13px;z-index:9999;line-height:1.6';
-    banner.textContent = '多语言词典加载失败：请通过 Launcher\\Serve.bat 启动本地服务器访问。';
-    document.body.appendChild(banner);
-  }
+  applyStatic();
   updateToggle();
   document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => setLang(current === 'zh' ? 'en' : 'zh'));

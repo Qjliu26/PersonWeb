@@ -31,7 +31,11 @@
 | 作品（描述/成果/架构） | `portfolio.list` |
 | 联系方式 | `contact.items`、`home.contactShort` |
 
-改完保存 → 刷新浏览器即生效。修改后提交：
+改完保存后，**先运行构建脚本**（把词典打包进 JS 模块，加快首屏加载）：
+```bat
+python Launcher\Build.py
+```
+然后提交：
 ```bat
 git add -A
 git commit --allow-empty-message -m ""

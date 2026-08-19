@@ -374,14 +374,31 @@
 
 .timeline-content p { font-size: 14px; }
 
-/* ---------- 个人特质卡 ---------- */
-.trait-card { text-align: center; padding: 20px 16px; }
+/* ---------- 个人特质卡（全宽一行、四卡等高） ---------- */
+.traits-grid { align-items: stretch; }
+
+.trait-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 16px;
+}
 
 .trait-icon { font-size: 28px; margin-bottom: 8px; }
 
 .trait-card h3 { font-size: 15.5px; margin-bottom: 4px; }
 
-.trait-card p { font-size: 13.5px; }
+.trait-card p {
+  flex: 1;
+  font-size: 13.5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
 
 /* ---------- 荣誉与奖项 ---------- */
 .honor-card { padding: 14px; display: flex; flex-direction: column; }
